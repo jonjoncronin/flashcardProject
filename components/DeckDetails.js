@@ -17,7 +17,7 @@ export default class DeckDetails extends React.Component {
             <Title>Deck Details</Title>
           </Body>
           <Right>
-            <Button transparent onPress={() => console.log("Goto Add a Card")}>
+            <Button transparent onPress={() => this.props.navigation.navigate("CardInput")}>
               <Icon type="MaterialIcons" name='add-circle-outline' />
             </Button>
           </Right>

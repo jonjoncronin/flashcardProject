@@ -5,7 +5,7 @@ import { StackNavigator } from 'react-navigation';
 // import DeckDetails from './components/DeckDetails';
 // import DeckInput from './components/DeckInput';
 
-export default class DeckInput extends React.Component {
+export default class CardInput extends React.Component {
   render() {
     return (
       <Container>
@@ -16,14 +16,14 @@ export default class DeckInput extends React.Component {
             </Button>
           </Left>
           <Body>
-            <Title>Add a Deck</Title>
+            <Title>Add a Card</Title>
           </Body>
           <Right />
         </Header>
         <Content>
-          <Text>Input to Add a Deck</Text>
+          <Text>Input to Add a Card</Text>
           <Button transparent onPress={() => {
-            console.log("Submit a deck to be added");
+            console.log("Submit a card to be added");
             this.props.navigation.goBack();
             }}>
             <Text>Submit</Text>

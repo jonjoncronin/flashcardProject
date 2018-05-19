@@ -2,6 +2,7 @@ import React from 'react';
 import Decks from './components/Decks';
 import DeckDetails from './components/DeckDetails';
 import DeckInput from './components/DeckInput';
+import CardInput from './components/CardInput';
 import { createStackNavigator } from 'react-navigation'
 
 const RootStack = createStackNavigator(
@@ -9,6 +10,7 @@ const RootStack = createStackNavigator(
     Home: Decks,
     DeckDetails: DeckDetails,
     DeckInput: DeckInput,
+    CardInput: CardInput
   },
   {
     navigationOptions: {
