@@ -1,6 +1,22 @@
 import React from 'react';
-import { Container, Header, Body, Title, Content, Text} from 'native-base';
+import Decks from './components/Decks';
+import DeckDetails from './components/DeckDetails';
+import DeckInput from './components/DeckInput';
+import { createStackNavigator } from 'react-navigation'
 
+const RootStack = createStackNavigator(
+  {
+    Home: Decks,
+    DeckDetails: DeckDetails,
+    DeckInput: DeckInput,
+  },
+  {
+    navigationOptions: {
+      header: null
+    },
+    InitialRouteName: 'Home',
+  }
+)
 export default class App extends React.Component {
   state = { isReady: false };
 
@@ -17,17 +33,6 @@ export default class App extends React.Component {
     if (!this.state.isReady) {
       return <Expo.AppLoading />;
     }
-    return (
-      <Container>
-        <Header>
-          <Body>
-            <Title>Header</Title>
-          </Body>
-        </Header>
-        <Content>
-          <Text>Open up App.js to start working on your app!</Text>
-        </Content>
-      </Container>
-    );
+    return <RootStack />;
   }
 }
