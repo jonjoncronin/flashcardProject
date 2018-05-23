@@ -12,7 +12,7 @@ class Decks extends React.Component {
         <Text>
           My Decks Header
         </Text>
-        <Button title='New Deck' onPress={() => navigate("DeckInput")} />
+        <MaterialIcons name="add-box" size={50} onPress={() => navigate("DeckInput")} />
         <Text onPress={() => navigate("DeckDetails")}>
           Deck 1
         </Text>
