@@ -1,13 +1,16 @@
 import React from 'react';
-// import { createStore } from 'redux';
-// import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
+import reducer from './reducers';
 import { View, StatusBar } from 'react-native';
 import { createStackNavigator } from 'react-navigation'
 import { Constants } from 'expo';
-import Decks from './components/Decks';
+import DecksView from './components/DecksView';
 import DeckDetails from './components/DeckDetails';
 import DeckInput from './components/DeckInput';
 import CardInput from './components/CardInput';
+
+const store = createStore(reducer);
 
 function GenericStatusBar ({backgroundColor, ...props}) {
   return (
@@ -19,7 +22,7 @@ function GenericStatusBar ({backgroundColor, ...props}) {
 
 const RootStack = createStackNavigator(
   {
-    Home: Decks,
+    Home: DecksView,
     DeckDetails: DeckDetails,
     DeckInput: DeckInput,
     CardInput: CardInput
@@ -31,14 +34,23 @@ const RootStack = createStackNavigator(
     InitialRouteName: 'Home',
   }
 )
-export default class App extends React.Component {
+
+class App extends React.Component {
 
   render() {
     return (
-      <View style={{flex: 1}}>
-        <GenericStatusBar backgroundColor='skyblue' barStyle='light-content' />
-        <RootStack />
-      </View>
+      <Provider store={store}>
+        <View style={{flex: 1}}>
+          <GenericStatusBar backgroundColor='skyblue' barStyle='light-content' />
+          <RootStack />
+        </View>
+      </Provider>
     )
   }
 }
+
+// const mapStateToProps = state => {
+//   return { decks: state.decks };
+// }
+
+export default App;

@@ -1,11 +1,13 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { View, Text, Button, Icon } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 import DeckDetails from './DeckDetails';
 import DeckInput from './DeckInput';
 
-class Decks extends React.Component {
+class DecksView extends React.Component {
   render() {
+    console.log("Decks View Props: ", this.props);
     const navigate = this.props.navigation.navigate;
     return (
       <View style={{flex: 1}}>
@@ -24,7 +26,11 @@ class Decks extends React.Component {
   }
 }
 
-export default Decks;
+const mapStateToProps = state => {
+  return { decks: state };
+};
+
+export default connect(mapStateToProps)(DecksView);
 
 // <Container>
 //   <Header>
