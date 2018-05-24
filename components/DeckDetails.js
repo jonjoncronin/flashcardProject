@@ -1,18 +1,38 @@
 import React from 'react';
-import { View, Text, Button, Icon } from 'react-native';
+import { View, Text, Button, Icon, FlatList } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 
 class DeckDetails extends React.Component {
   render() {
-    const navigate = this.props.navigation.navigate;
+    console.log("DeckDetails View Props: ", this.props);
+    const { navigation } = this.props
+    const deck = navigation.getParam('deck', {})
+    console.log("Deck to detail: ", deck);
     return (
       <View style={{flex: 1}}>
         <Text>
           Deck Details View
         </Text>
         <Button title='Add a card' onPress={() => {
-            this.props.navigation.navigate("CardInput");
+            navigation.navigate("CardInput");
           }} />
+        {Object.keys(deck).length !== 0 ? (
+          <View>
+            <Text>{deck.shortName}</Text>
+            <Text>{deck.description}</Text>
+            <Text>Cards</Text>
+            <FlatList
+              data={deck.cards}
+              keyExtractor={item => item.id.toString()}
+              renderItem={({ item }) => (
+                <Text>
+                  {item.question}
+                </Text>
+              )} />
+            </View>
+        ): (
+          <Text></Text>
+        )}
       </View>
     );
   }
