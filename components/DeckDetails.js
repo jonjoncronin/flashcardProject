@@ -1,6 +1,7 @@
 import React from 'react';
-import { View, Text, Button, Icon, FlatList } from 'react-native';
-import { MaterialIcons } from '@expo/vector-icons';
+import { View, Text, Button, FlatList } from 'react-native';
+import { MaterialIcons, Ionicons } from '@expo/vector-icons';
+import Header from './Header';
 
 class DeckDetails extends React.Component {
   render() {
@@ -9,10 +10,12 @@ class DeckDetails extends React.Component {
     const deck = navigation.getParam('deck', {})
     console.log("Deck to detail: ", deck);
     return (
-      <View style={{flex: 1}}>
-        <Text>
-          Deck Details View
-        </Text>
+      <View style={{flex: 1, backgroundColor: 'slategray'}}>
+        <Header
+          left={<MaterialIcons name="arrow-back" size={30} onPress={() => navigation.goBack()} />}
+          center="Deck Details"
+          right=''
+        />
         <Button title='Add a card' onPress={() => {
             navigation.navigate("CardInput");
           }} />

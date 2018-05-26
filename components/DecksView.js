@@ -1,7 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { View, Text, Button, Icon, FlatList } from 'react-native';
-import { MaterialIcons } from '@expo/vector-icons';
+import { MaterialIcons, Ionicons } from '@expo/vector-icons';
+import Header from './Header';
 import DeckDetails from './DeckDetails';
 import DeckInput from './DeckInput';
 
@@ -9,16 +10,17 @@ class DecksView extends React.Component {
   render() {
     console.log("Decks View Props: ", this.props);
     const { decks } = this.props;
-    const navigate = this.props.navigation.navigate;
+    const navigation = this.props.navigation;
     console.log("Decks: ", decks);
     return (
-      <View style={{flex: 1}}>
-        <Text>
-          My Decks Header
-        </Text>
-        <MaterialIcons name="add-box" size={50} onPress={() => navigate("DeckInput")} />
+      <View style={{flex: 1, backgroundColor: 'slategray'}}>
+        <Header
+          left=''
+          center='My Decks'
+          right={<MaterialIcons name="add-box" size={30} onPress={() => navigation.navigate("DeckInput")} />}
+        />
         {decks.length !== 0 ? (
-          <View style={{backgroundColor: 'lightblue'}}>
+          <View style={{flex: 1, margin: 10, backgroundColor: 'white'}}>
             <Text>more than one deck</Text>
             <FlatList
               data={decks}
@@ -26,7 +28,7 @@ class DecksView extends React.Component {
               renderItem={({ item }) => (
                 <Text
                   key={item.id}
-                  onPress={() => navigate("DeckDetails", {deck: item})}
+                  onPress={() => navigation.navigate("DeckDetails", {deck: item})}
                 >
                   {item.shortName}
                 </Text>

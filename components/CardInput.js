@@ -1,21 +1,24 @@
 import React from 'react';
-import { View, Text, Button, Icon } from 'react-native';
-import { MaterialIcons } from '@expo/vector-icons';
+import { View, Text, Button } from 'react-native';
+import { MaterialIcons, Ionicons } from '@expo/vector-icons';
+import Header from './Header';
 
 // import DeckDetails from './components/DeckDetails';
 // import DeckInput from './components/DeckInput';
 
 export default class CardInput extends React.Component {
   render() {
-    const navigate = this.props.navigation.navigate;
+    const navigation = this.props.navigation;
     return (
-      <View style={{flex: 1}}>
-        <Text>
-          Card input
-        </Text>
+      <View style={{flex: 1, backgroundColor: 'slategray'}}>
+        <Header
+          left={<MaterialIcons name="arrow-back" size={30} onPress={() => navigation.goBack()} />}
+          center="Add a new card"
+          right=''
+        />
         <Button title='Submit new card' onPress={() => {
             console.log("Submit a card to be added");
-            this.props.navigation.goBack();
+            navigation.goBack();
           }} />
       </View>
     );
