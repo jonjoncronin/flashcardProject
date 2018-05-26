@@ -22,6 +22,11 @@ const initialDecks = [
         question: "What is Michael Jordans jersey number?",
         answer: "23"}
     ]
+  },
+  {id: 3,
+    shortName: "1234567890123456...",
+    description: "LongLongDescription",
+    cards: []
   }
 ]
 

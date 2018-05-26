@@ -14,7 +14,7 @@ class DecksView extends React.Component {
       <TouchableOpacity
         onPress={() => navigation.navigate("DeckDetails", {deck: item})}
       >
-      <View style={{flex:1, flexDirection: 'row', alignContent: 'center', margin: 5, height: 40, backgroundColor: 'green'}}>
+      <View style={{flex:1, flexDirection: 'row', alignContent: 'center', margin: 5, height: 40, backgroundColor: '#14A76C'}}>
         <View style={{flex: 11}}>
           <Text
             style={{margin: 5, fontSize: 20, fontWeight: 'bold', textAlign: 'left', color: 'white'}}
@@ -38,11 +38,11 @@ class DecksView extends React.Component {
     const navigation = this.props.navigation;
 
     return (
-      <View style={{flex: 1, backgroundColor: 'slategray'}}>
+      <View style={{flex: 1, backgroundColor: '#747474'}}>
         <Header
           left=''
           center='My Decks'
-          right={<MaterialIcons name="add-box" size={30} onPress={() => navigation.navigate("DeckInput")} />}
+          right={<MaterialIcons color='#FF652F' name="add-box" size={30} onPress={() => navigation.navigate("DeckInput")} />}
         />
         {decks.length !== 0 ? (
           <View style={{flex: 1, margin: 10, backgroundColor: 'white'}}>

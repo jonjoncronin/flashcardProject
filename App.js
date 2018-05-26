@@ -41,7 +41,7 @@ class App extends React.Component {
     return (
       <Provider store={store}>
         <View style={{flex: 1}}>
-          <GenericStatusBar backgroundColor='slategray' barStyle='light-content' />
+          <GenericStatusBar backgroundColor='#747474' barStyle='light-content' />
           <RootStack />
         </View>
       </Provider>

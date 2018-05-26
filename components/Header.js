@@ -6,19 +6,19 @@ class Header extends React.Component {
   render() {
     const {left, center, right} = this.props;
     return (
-      <View style={{margin: 5, height: 30, flexDirection: 'row'}}>
-        <View style={{flex: 1, backgroundColor: 'white'}}>
-          <Text style={{textAlign: 'left'}}>
+      <View style={{height: 40, flexDirection: 'row'}}>
+        <View style={{flex: 1, alignContent: 'center', justifyContent: 'center', backgroundColor: '#272727'}}>
+          <Text style={{textAlign: 'left', color: 'white'}}>
             {left}
           </Text>
         </View>
-        <View style={{flex: 2, justifyContent: 'center', alignContent: 'center', backgroundColor: 'white'}}>
-          <Text style={{fontSize: 20, textAlign: 'center'}}>
+        <View style={{flex: 2, alignContent: 'center', justifyContent: 'center', backgroundColor: '#272727'}}>
+          <Text style={{fontSize: 20, textAlign: 'center', color: 'white'}}>
             {center}
           </Text>
         </View>
-        <View style={{flex: 1, backgroundColor: 'white'}}>
-          <Text style={{textAlign: 'right'}}>
+        <View style={{flex: 1, alignContent: 'center', justifyContent: 'center', backgroundColor: '#272727'}}>
+          <Text style={{textAlign: 'right', color: 'white'}}>
             {right}
           </Text>
         </View>
