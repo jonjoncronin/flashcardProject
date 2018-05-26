@@ -1,27 +1,35 @@
-import React from 'react';
-import { View, Text, Button, Icon } from 'react-native';
-import { MaterialIcons, Ionicons } from '@expo/vector-icons';
-import { StackNavigator } from 'react-navigation';
-import Header from './Header';
+import React from "react";
+import { View, Text, Button, Icon } from "react-native";
+import { MaterialIcons, Ionicons } from "@expo/vector-icons";
+import { StackNavigator } from "react-navigation";
+import Header from "./Header";
 
 // import DeckDetails from './components/DeckDetails';
 // import DeckInput from './components/DeckInput';
 
 class DeckInput extends React.Component {
-
   render() {
     const navigation = this.props.navigation;
     return (
-      <View style={{flex: 1, backgroundColor: 'slategray'}}>
+      <View style={{ flex: 1, backgroundColor: "slategray" }}>
         <Header
-          left={<MaterialIcons name="arrow-back" size={30} onPress={() => navigation.goBack()} />}
+          left={
+            <MaterialIcons
+              name="arrow-back"
+              size={30}
+              onPress={() => navigation.goBack()}
+            />
+          }
           center="Add a new deck"
-          right=''
+          right=""
         />
-        <Button title='Submit new Deck' onPress={() => {
+        <Button
+          title="Submit new Deck"
+          onPress={() => {
             console.log("Submit a deck to be added");
             navigation.goBack();
-          }} />
+          }}
+        />
       </View>
     );
   }

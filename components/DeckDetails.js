@@ -1,24 +1,33 @@
-import React from 'react';
-import { View, Text, Button, FlatList } from 'react-native';
-import { MaterialIcons, Ionicons } from '@expo/vector-icons';
-import Header from './Header';
+import React from "react";
+import { View, Text, Button, FlatList } from "react-native";
+import { MaterialIcons, Ionicons } from "@expo/vector-icons";
+import Header from "./Header";
 
 class DeckDetails extends React.Component {
   render() {
     console.log("DeckDetails View Props: ", this.props);
-    const { navigation } = this.props
-    const deck = navigation.getParam('deck', {})
+    const { navigation } = this.props;
+    const deck = navigation.getParam("deck", {});
     console.log("Deck to detail: ", deck);
     return (
-      <View style={{flex: 1, backgroundColor: 'slategray'}}>
+      <View style={{ flex: 1, backgroundColor: "slategray" }}>
         <Header
-          left={<MaterialIcons name="arrow-back" size={30} onPress={() => navigation.goBack()} />}
+          left={
+            <MaterialIcons
+              name="arrow-back"
+              size={30}
+              onPress={() => navigation.goBack()}
+            />
+          }
           center="Deck Details"
-          right=''
+          right=""
         />
-        <Button title='Add a card' onPress={() => {
+        <Button
+          title="Add a card"
+          onPress={() => {
             navigation.navigate("CardInput");
-          }} />
+          }}
+        />
         {Object.keys(deck).length !== 0 ? (
           <View>
             <Text>{deck.shortName}</Text>
@@ -27,14 +36,11 @@ class DeckDetails extends React.Component {
             <FlatList
               data={deck.cards}
               keyExtractor={item => item.id.toString()}
-              renderItem={({ item }) => (
-                <Text>
-                  {item.question}
-                </Text>
-              )} />
-            </View>
-        ): (
-          <Text></Text>
+              renderItem={({ item }) => <Text>{item.question}</Text>}
+            />
+          </View>
+        ) : (
+          <Text />
         )}
       </View>
     );
