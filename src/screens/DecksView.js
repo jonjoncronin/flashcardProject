@@ -1,17 +1,16 @@
 import React from "react";
 import { connect } from "react-redux";
-import { View, Text, Button, TouchableOpacity, FlatList } from "react-native";
-import { MaterialIcons, Ionicons } from "@expo/vector-icons";
-import Header from "./Header";
-import DeckDetails from "./DeckDetails";
-import DeckInput from "./DeckInput";
+import { Container, Header, Left, Right, Content, Body, Title, Icon, Button, Text } from "native-base";
+import { TouchableOpacity, View, FlatList } from "react-native";
+// import DeckDetails from "./DeckDetails";
+// import DeckInput from "./DeckInput";
 
 class DecksView extends React.Component {
   renderListItem = ({ item }) => {
     const navigation = this.props.navigation;
     return (
       <TouchableOpacity
-        onPress={() => navigation.navigate("DeckDetails", { deck: item })}
+        onPress={() => console.log("Goto DeckDetails")}
       >
         <View
           style={{
@@ -44,7 +43,6 @@ class DecksView extends React.Component {
               justifyContent: "center"
             }}
           >
-            <MaterialIcons color="white" name="chevron-right" size={30} />
           </View>
         </View>
       </TouchableOpacity>
@@ -53,24 +51,24 @@ class DecksView extends React.Component {
 
   render() {
     console.log("Decks View props: ", this.props);
-
     const { decks } = this.props;
     const navigation = this.props.navigation;
-
     return (
-      <View style={{ flex: 1, backgroundColor: "#747474" }}>
-        <Header
-          left=""
-          center="My Decks"
-          right={
-            <MaterialIcons
-              color="#FF652F"
-              name="add-box"
-              size={30}
-              onPress={() => navigation.navigate("DeckInput")}
-            />
-          }
-        />
+      <Container style={{ flex: 1, backgroundColor: "#747474"}}>
+        <Header style={{backgroundColor: '#272727'}}>
+          <Left />
+          <Body>
+            <Title style={{color: 'white'}}>My Decks</Title>
+          </Body>
+          <Right>
+            <TouchableOpacity
+              onPress={() => console.log("Goto DeckInput Screen")}
+            >
+              <Icon type='MaterialIcons' name='add-box' style={{fontSize: 30, color:'#FF652F'}} />
+            </TouchableOpacity>
+          </Right>
+        </Header>
+        <Content>
         {decks.length !== 0 ? (
           <View style={{ flex: 1, margin: 10, backgroundColor: "white" }}>
             <FlatList
@@ -79,10 +77,11 @@ class DecksView extends React.Component {
               renderItem={this.renderListItem}
             />
           </View>
-        ) : (
-          <Text />
-        )}
-      </View>
+          ) : (
+            <Text />
+          )}
+        </Content>
+      </Container>
     );
   }
 }
