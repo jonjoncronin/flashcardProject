@@ -62,7 +62,9 @@ class DecksView extends React.Component {
           </Body>
           <Right>
             <TouchableOpacity
-              onPress={() => console.log("Goto DeckInput Screen")}
+              onPress={() => {
+                navigation.navigate("NewDeck")
+              }}
             >
               <Icon type='MaterialIcons' name='add-box' style={{fontSize: 30, color:'#FF652F'}} />
             </TouchableOpacity>

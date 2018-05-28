@@ -9,7 +9,7 @@ import { Constants } from "expo";
 /* Screens */
 import DecksView from "./screens/DecksView";
 // import DeckDetails from "./components/DeckDetails";
-// import DeckInput from "./components/DeckInput";
+import DeckInput from "./screens/DeckInput";
 // import CardInput from "./components/CardInput";
 
 const store = configureStore();
@@ -23,7 +23,8 @@ function GenericStatusBar({ backgroundColor, ...props}) {
 }
 const RootStack = createStackNavigator(
   {
-    Home: DecksView
+    Home: DecksView,
+    NewDeck: DeckInput
   },
   {
     navigationOptions: {
