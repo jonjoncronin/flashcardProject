@@ -54,7 +54,10 @@ class DeckDetails extends React.Component {
         <Footer>
           <FooterTab style={{backgroundColor: '#272727'}}>
             <Button vertical
-              onPress={() => console.log("Adding Card")}
+              onPress={() => {
+                console.log("Adding Card");
+                navigation.navigate("NewCard", {deckID: deck.id});
+              }}
             >
               <Icon type='MaterialIcons' name='playlist-add' />
               <Text>Question</Text>

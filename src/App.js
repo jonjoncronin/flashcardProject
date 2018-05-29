@@ -10,7 +10,7 @@ import { Constants } from "expo";
 import DecksView from "./screens/DecksView";
 import DeckDetails from "./screens/DeckDetails";
 import DeckInput from "./screens/DeckInput";
-// import CardInput from "./components/CardInput";
+import CardInput from "./screens/CardInput";
 
 const store = configureStore();
 
@@ -26,6 +26,7 @@ const RootStack = createStackNavigator(
     Home: DecksView,
     NewDeck: DeckInput,
     DeckDetails: DeckDetails,
+    NewCard: CardInput
   },
   {
     navigationOptions: {
