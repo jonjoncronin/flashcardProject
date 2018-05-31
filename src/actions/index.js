@@ -7,3 +7,13 @@ export const addDeck = userInputs => ({
 export const handleDeckAdd = userInputs => dispatch => {
   dispatch(addDeck(userInputs));
 };
+
+export const DELETE_DECK = "DELETE_DECK";
+export const deleteDeck = deckID => ({
+  type: "DELETE_DECK",
+  deckID
+});
+
+export const handleDeckDelete = deckID => dispatch => {
+  dispatch(deleteDeck(deckID));
+};

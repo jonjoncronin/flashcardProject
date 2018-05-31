@@ -2,6 +2,8 @@ import React from "react";
 import { Container, Header, Left, Right, Content, Body, Title, Icon, Button, Text, Card, CardItem, Footer, FooterTab } from "native-base";
 import { TouchableOpacity, View, FlatList } from "react-native";
 import { StackNavigator } from "react-navigation";
+import { connect } from "react-redux";
+import { handleDeckDelete } from "../actions"
 
 class DeckDetails extends React.Component {
 
@@ -16,7 +18,7 @@ class DeckDetails extends React.Component {
 
   render() {
     console.log("DeckDetails View Props: ", this.props);
-    const { navigation } = this.props;
+    const { navigation, handleDeckDelete } = this.props;
     const deck = navigation.getParam("deck", {});
     console.log("Deck to detail: ", deck);
     return (
@@ -69,7 +71,11 @@ class DeckDetails extends React.Component {
               <Text>Deck</Text>
             </Button>
             <Button vertical
-              onPress={() => console.log("deleting Deck")}
+              onPress={() => {
+                console.log("deleting Deck: ", deck.id);
+                handleDeckDelete(deck.id);
+                navigation.goBack();
+              }}
             >
               <Icon type='MaterialIcons' name='delete-forever' />
               <Text>Deck</Text>
@@ -80,8 +86,15 @@ class DeckDetails extends React.Component {
     );
   }
 }
-export default DeckDetails;
 
+const mapDispatchToProps = dispatch => {
+  return {
+    handleDeckDelete: (deckID) =>
+      dispatch(handleDeckDelete(deckID))
+  };
+};
+
+export default connect(null, mapDispatchToProps)(DeckDetails);
 // <Container>
 //   <Header>
 //   <Left>

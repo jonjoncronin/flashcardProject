@@ -61,6 +61,15 @@ function decks(state = initialDecks, action) {
       return newDecks;
     }
 
+    case "DELETE_DECK": {
+      let newDecks = state.filter(entry => {
+        return entry.id !== action.deckID;
+      });
+      // Update the backend DB while you're at it.
+
+      return newDecks;
+    }
+
     default:
       return state;
   }
