@@ -10,7 +10,7 @@ class DecksView extends React.Component {
     const navigation = this.props.navigation;
     return (
       <TouchableOpacity
-        onPress={() => navigation.navigate("DeckDetails", { deck: item })}
+        onPress={() => navigation.navigate("DeckDetails", { deckID: item.id })}
       >
         <View
           style={{

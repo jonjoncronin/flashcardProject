@@ -70,6 +70,28 @@ function decks(state = initialDecks, action) {
       return newDecks;
     }
 
+    case "ADD_CARD": {
+      let newDecks = JSON.parse(JSON.stringify(state));
+      let deckToEdit = newDecks.find(deck => {
+        return deck.id === action.deckID;
+      });
+
+      if(deckToEdit) {
+        let { question, answer } = action.userInputs;
+        let newCard = {
+          id: uuidv1(),
+          question: question,
+          answer: answer
+        }
+        deckToEdit.cards.push(newCard);
+      // Update the backend DB while you're at it.
+      return newDecks;
+      }
+      else {
+        return state;
+      }
+    }
+
     default:
       return state;
   }

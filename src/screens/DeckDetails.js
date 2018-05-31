@@ -18,8 +18,11 @@ class DeckDetails extends React.Component {
 
   render() {
     console.log("DeckDetails View Props: ", this.props);
-    const { navigation, handleDeckDelete } = this.props;
-    const deck = navigation.getParam("deck", {});
+    const { decks, navigation, handleDeckDelete } = this.props;
+    const deckID = navigation.getParam("deckID", {});
+    const deck = decks.find(entry => {
+      return entry.id === deckID;
+    });
     console.log("Deck to detail: ", deck);
     return (
       <Container style={{ flex: 1, backgroundColor: "#747474"}}>
@@ -94,7 +97,11 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(null, mapDispatchToProps)(DeckDetails);
+const mapStateToProps = state => {
+  return { decks: state };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(DeckDetails);
 // <Container>
 //   <Header>
 //   <Left>
