@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Header, Left, Right, Content, Body, Title, Icon, Button, Text, Card, CardItem, Footer, FooterTab } from "native-base";
+import { Container, Header, Left, Right, Content, Body, Title, Icon, Button, Text, Card, CardItem, Footer, FooterTab, SwipeRow } from "native-base";
 import { TouchableOpacity, View, FlatList } from "react-native";
 import { StackNavigator } from "react-navigation";
 import { connect } from "react-redux";
@@ -10,9 +10,29 @@ class DeckDetails extends React.Component {
   renderListItem = ({ item }) => {
     const navigation = this.props.navigation;
     return (
-      <Text key={item.id}>
-        {item.question}
-      </Text>
+
+        <SwipeRow
+          style={{flex:1}}
+          leftOpenValue={75}
+          rightOpenValue={-75}
+          left={
+            <Button success onPress={() => alert(item.answer)} >
+              <Icon active name="add" />
+            </Button>
+          }
+          body={
+            <View>
+              <Text key={item.id}>
+                {item.question}
+              </Text>
+            </View>
+          }
+          right={
+            <Button danger onPress={() => alert(item.id)}>
+              <Icon active name="trash" />
+            </Button>
+          }
+        />
     );
   };
 
@@ -37,22 +57,27 @@ class DeckDetails extends React.Component {
           </Body>
           <Right />
         </Header>
-        <Content>
+        <Content padder>
           <Card>
             <CardItem header bordered>
-              <Text>Deck: {deck.shortName}</Text>
+              <View>
+                <Text>{deck.shortName}</Text>
+                <Text>{deck.description}</Text>
+              </View>
             </CardItem>
             <CardItem>
-              <View>
-                <Text>Description:</Text>
-                <Text>{deck.description}</Text>
+                <View style={{ flex: 1}}>
                 <Text>Questions ({deck ? deck.cards.length:0}):</Text>
                 {(deck && deck.cards.length !== 0) ? (
-                  <Text>{deck.cards[0].question}</Text>
+                  <FlatList
+                    data={deck.cards}
+                    keyExtractor={item => item.id.toString()}
+                    renderItem={this.renderListItem}
+                  />
                 ) : (
-                    <Text>No question cards for this deck</Text>
+                  <Text>No question cards for this deck</Text>
                 )}
-              </View>
+                </View>
             </CardItem>
           </Card>
         </Content>
