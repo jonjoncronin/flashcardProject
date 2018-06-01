@@ -11,6 +11,7 @@ import DecksView from "./screens/DecksView";
 import DeckDetails from "./screens/DeckDetails";
 import DeckInput from "./screens/DeckInput";
 import CardInput from "./screens/CardInput";
+import CardDetails from "./screens/CardDetails";
 
 const store = configureStore();
 
@@ -26,7 +27,8 @@ const RootStack = createStackNavigator(
     Home: DecksView,
     NewDeck: DeckInput,
     DeckDetails: DeckDetails,
-    NewCard: CardInput
+    NewCard: CardInput,
+    CardDetails: CardDetails
   },
   {
     navigationOptions: {

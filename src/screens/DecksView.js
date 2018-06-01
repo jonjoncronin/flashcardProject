@@ -19,7 +19,13 @@ class DecksView extends React.Component {
             alignContent: "center",
             margin: 5,
             height: 40,
-            backgroundColor: "#14A76C"
+            backgroundColor: "#14A76C",
+            elevation: 4,
+            shadowOffset: { width: 0, height: 5 },
+            shadowColor: '#000000',
+            shadowRadius: 1.2,
+            shadowOpacity: 0.2,
+            zIndex:999
           }}
         >
           <View style={{ flex: 11 }}>

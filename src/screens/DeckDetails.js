@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Header, Left, Right, Content, Body, Title, Icon, Button, Text, Card, CardItem, Footer, FooterTab, SwipeRow } from "native-base";
+import { Container, Header, Left, Right, Content, Body, Title, Subtitle, Icon, Button, Text, Card, CardItem, Footer, FooterTab, SwipeRow } from "native-base";
 import { TouchableOpacity, View, FlatList } from "react-native";
 import { StackNavigator } from "react-navigation";
 import { connect } from "react-redux";
@@ -9,30 +9,25 @@ class DeckDetails extends React.Component {
 
   renderListItem = ({ item }) => {
     const navigation = this.props.navigation;
+    const deckID = navigation.getParam("deckID", {});
     return (
-
-        <SwipeRow
-          style={{flex:1}}
-          leftOpenValue={75}
-          rightOpenValue={-75}
-          left={
-            <Button success onPress={() => alert(item.answer)} >
-              <Icon active name="add" />
-            </Button>
-          }
-          body={
-            <View>
-              <Text key={item.id}>
-                {item.question}
-              </Text>
-            </View>
-          }
-          right={
-            <Button danger onPress={() => alert(item.id)}>
-              <Icon active name="trash" />
-            </Button>
-          }
-        />
+      <TouchableOpacity onPress={() => navigation.navigate('CardDetails', {deckID:deckID, cardID:item.id})}>
+        <View style={{flex:1,
+          margin:5,
+          padding:5,
+          backgroundColor: '#2E9CCA',
+          elevation: 4,
+          shadowOffset: { width: 0, height: 5 },
+          shadowColor: '#000000',
+          shadowRadius: 1.2,
+          shadowOpacity: 0.2,
+          zIndex:999}}
+          >
+            <Text style={{color:'white', fontWeight:'bold'}} key={item.id}>
+              {item.question}
+            </Text>
+        </View>
+      </TouchableOpacity>
     );
   };
 
@@ -54,6 +49,7 @@ class DeckDetails extends React.Component {
           </Left>
           <Body>
             <Title style={{color: 'white'}}>Details</Title>
+            <Subtitle>Deck</Subtitle>
           </Body>
           <Right />
         </Header>
