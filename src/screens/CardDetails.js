@@ -61,6 +61,7 @@ class CardDetails extends React.Component {
               onPress={() => this.handleEditButtonClick()}
             >
               <Icon type='MaterialIcons' name='edit' />
+              <Text>Question</Text>
             </Button>
             <Button vertical
               onPress={() => {
@@ -70,6 +71,7 @@ class CardDetails extends React.Component {
               }}
             >
               <Icon type='MaterialIcons' name='delete-forever' />
+              <Text>Question</Text>
             </Button>
           </FooterTab>
         </Footer>
