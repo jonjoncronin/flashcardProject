@@ -50,3 +50,15 @@ export const deleteCard = (deckID, cardID) => ({
 export const handleCardDelete = (deckID, cardID) => dispatch => {
   dispatch(deleteCard(deckID, cardID));
 };
+
+export const EDIT_CARD = "EDIT_CARD";
+export const editCard = (deckID, cardID, userInputs) => ({
+  type: "EDIT_CARD",
+  deckID,
+  cardID,
+  userInputs
+});
+
+export const handleCardEdit = (deckID, cardID, userInputs) => dispatch => {
+  dispatch(editCard(deckID, cardID, userInputs));
+};

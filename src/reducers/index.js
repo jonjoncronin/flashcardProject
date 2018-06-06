@@ -125,6 +125,31 @@ function decks(state = initialDecks, action) {
       }
     }
 
+    case "EDIT_CARD": {
+      let newDecks = JSON.parse(JSON.stringify(state));
+      let deckToEdit = newDecks.find(deck => {
+        return deck.id === action.deckID;
+      });
+
+      if(deckToEdit) {
+        let cardToEdit = deckToEdit.cards.find(card => {
+          return card.id === action.cardID;
+        })
+        if(cardToEdit) {
+          cardToEdit.question = action.userInputs.question;
+          cardToEdit.answer = action.userInputs.answer;
+          // Update the backend DB while you're at it.
+          return newDecks;
+        }
+        else {
+          return state;
+        }
+      }
+      else {
+        return state;
+      }
+    }
+
     default:
       return state;
   }

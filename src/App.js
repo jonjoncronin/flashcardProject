@@ -13,6 +13,7 @@ import DeckInput from "./screens/DeckInput";
 import CardInput from "./screens/CardInput";
 import CardDetails from "./screens/CardDetails";
 import DeckEdit from "./screens/DeckEdit";
+import CardEdit from "./screens/CardEdit";
 
 const store = configureStore();
 
@@ -30,7 +31,8 @@ const RootStack = createStackNavigator(
     DeckDetails: DeckDetails,
     NewCard: CardInput,
     CardDetails: CardDetails,
-    EditDeck: DeckEdit
+    EditDeck: DeckEdit,
+    EditCard: CardEdit
   },
   {
     navigationOptions: {

@@ -6,15 +6,6 @@ import { connect } from "react-redux";
 import { handleCardDelete } from "../actions"
 
 class CardDetails extends React.Component {
-  state = {
-    editting: false
-  };
-
-  handleEditButtonClick = () => {
-    console.log("Handling Card edit");
-    this.setState({editting: !this.state.editting});
-  };
-
   render() {
     console.log("CardDetails View Props: ", this.props);
     const { decks, navigation, handleCardDelete } = this.props;
@@ -59,7 +50,10 @@ class CardDetails extends React.Component {
         <Footer>
           <FooterTab style={{backgroundColor: '#272727'}}>
             <Button vertical
-              onPress={() => this.handleEditButtonClick()}
+              onPress={() => {
+                console.log("editting Card: ", card.id);
+                navigation.navigate("EditCard", {deckID: deck.id, cardID: card.id});
+              }}
             >
               <Icon type='MaterialIcons' name='edit' />
               <Text>Question</Text>
