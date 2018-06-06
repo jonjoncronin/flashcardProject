@@ -39,3 +39,14 @@ export const addCard = (deckID, userInputs) => ({
 export const handleCardAdd = (deckID, userInputs) => dispatch => {
   dispatch(addCard(deckID, userInputs));
 };
+
+export const DELETE_CARD = "DELETE_CARD";
+export const deleteCard = (deckID, cardID) => ({
+  type: "DELETE_CARD",
+  deckID,
+  cardID
+});
+
+export const handleCardDelete = (deckID, cardID) => dispatch => {
+  dispatch(deleteCard(deckID, cardID));
+};

@@ -3,6 +3,7 @@ import { Container, Header, Left, Right, Content, Body, Title,Subtitle, Icon, Bu
 import { TouchableOpacity, View } from "react-native";
 import { StackNavigator } from "react-navigation";
 import { connect } from "react-redux";
+import { handleCardDelete } from "../actions"
 
 class CardDetails extends React.Component {
   state = {
@@ -16,7 +17,7 @@ class CardDetails extends React.Component {
 
   render() {
     console.log("CardDetails View Props: ", this.props);
-    const { decks, navigation } = this.props;
+    const { decks, navigation, handleCardDelete } = this.props;
     const deckID = navigation.getParam("deckID", {});
     const cardID = navigation.getParam("cardID", {});
     const deck = decks.find(entry => {
@@ -45,12 +46,12 @@ class CardDetails extends React.Component {
           <Card>
             <CardItem header bordered>
               <View>
-                <Text>{card.question}</Text>
+                <Text>{card ? card.question : ''}</Text>
               </View>
             </CardItem>
             <CardItem>
                 <View>
-                  <Text>{card.answer}</Text>
+                  <Text>{card ? card.answer : ''}</Text>
                 </View>
             </CardItem>
           </Card>
@@ -66,7 +67,7 @@ class CardDetails extends React.Component {
             <Button vertical
               onPress={() => {
                 console.log("deleting Card: ", card.id);
-                // handleDeckDelete(deck.id);
+                handleCardDelete(deck.id, card.id);
                 navigation.goBack();
               }}
             >
@@ -80,16 +81,16 @@ class CardDetails extends React.Component {
   }
 }
 
-// const mapDispatchToProps = dispatch => {
-//   return {
-//     handleDeckDelete: (deckID) =>
-//       dispatch(handleDeckDelete(deckID))
-//   };
-// };
-//
+const mapDispatchToProps = dispatch => {
+  return {
+    handleCardDelete: (deckID, cardID) =>
+      dispatch(handleCardDelete(deckID, cardID))
+  };
+};
+
 
 const mapStateToProps = state => {
   return { decks: state };
 };
 
-export default connect(mapStateToProps, null)(CardDetails);
+export default connect(mapStateToProps, mapDispatchToProps)(CardDetails);

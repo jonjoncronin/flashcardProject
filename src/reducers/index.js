@@ -106,6 +106,25 @@ function decks(state = initialDecks, action) {
       }
     }
 
+    case "DELETE_CARD": {
+      console.log("CardDelete Actions: ", action);
+      let newDecks = JSON.parse(JSON.stringify(state));
+      let deckToEdit = newDecks.find(deck => {
+        return deck.id === action.deckID;
+      });
+
+      if(deckToEdit) {
+        deckToEdit.cards = deckToEdit.cards.filter(entry => {
+          return entry.id !== action.cardID;
+        });
+        // Update the backend DB while you're at it.
+        return newDecks;
+      }
+      else {
+        return state;
+      }
+    }
+
     default:
       return state;
   }
