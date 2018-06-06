@@ -89,7 +89,10 @@ class DeckDetails extends React.Component {
               <Text>Question</Text>
             </Button>
             <Button vertical
-              onPress={() => console.log("Editting Deck")}
+              onPress={() => {
+                console.log("Editting Deck");
+                navigation.navigate("EditDeck", {deckID: deck.id});
+              }}
             >
               <Icon type='MaterialIcons' name='edit' />
               <Text>Deck</Text>

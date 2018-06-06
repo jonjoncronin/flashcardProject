@@ -70,6 +70,20 @@ function decks(state = initialDecks, action) {
       return newDecks;
     }
 
+    case "EDIT_DECK": {
+      let newDecks = [...state];
+      let { shortName, description } = action.userInputs;
+      let deckToEdit = newDecks.findIndex((entry) => {
+        return entry.id === action.deckID;
+      });
+
+      newDecks[deckToEdit].shortName = shortName;
+      newDecks[deckToEdit].description = description;
+      // Update the backend DB while you're at it.
+
+      return newDecks;
+    }
+
     case "ADD_CARD": {
       let newDecks = JSON.parse(JSON.stringify(state));
       let deckToEdit = newDecks.find(deck => {
