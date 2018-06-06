@@ -65,7 +65,7 @@ class CardInput extends React.Component {
                 light
                 onPress={this.handleSubmit}
               >
-                <Text>Submit Question</Text>
+                <Text>Add Question</Text>
               </Button>
             </View>
           </Form>

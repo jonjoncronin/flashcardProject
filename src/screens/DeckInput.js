@@ -62,7 +62,7 @@ class DeckInput extends React.Component {
                 light
                 onPress={this.handleSubmit}
               >
-                <Text>Submit Deck</Text>
+                <Text>Add Deck</Text>
               </Button>
             </View>
           </Form>
