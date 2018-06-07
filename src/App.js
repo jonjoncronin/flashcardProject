@@ -14,6 +14,7 @@ import CardInput from "./screens/CardInput";
 import CardDetails from "./screens/CardDetails";
 import DeckEdit from "./screens/DeckEdit";
 import CardEdit from "./screens/CardEdit";
+import QuizView from "./screens/QuizView";
 
 const store = configureStore();
 
@@ -32,7 +33,8 @@ const RootStack = createStackNavigator(
     NewCard: CardInput,
     CardDetails: CardDetails,
     EditDeck: DeckEdit,
-    EditCard: CardEdit
+    EditCard: CardEdit,
+    Quiz: QuizView
   },
   {
     navigationOptions: {

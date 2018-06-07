@@ -56,10 +56,21 @@ class DeckDetails extends React.Component {
         <Content padder>
           <Card>
             <CardItem header bordered>
-              <View>
-                <Text>{deck.shortName}</Text>
-                <Text>{deck.description}</Text>
-              </View>
+              <Left>
+                <Button vertical
+                  onPress={() => {
+                    console.log("Starting Quiz");
+                    navigation.navigate("Quiz", {deckID: deck.id});
+                  }}
+                >
+                  <Icon type='MaterialCommunityIcons' name='book-open-page-variant' />
+                  <Text>Quiz</Text>
+                </Button>
+                <Body>
+                  <Text>{deck.shortName}</Text>
+                  <Text>{deck.description}</Text>
+                </Body>
+              </Left>
             </CardItem>
             <CardItem>
                 <View style={{ flex: 1}}>
