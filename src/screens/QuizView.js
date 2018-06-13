@@ -1,13 +1,18 @@
 import React from "react";
-import { Container, Header, Left, Right, Content, Body, Title, Subtitle, Icon, Button, Text, Card, CardItem, Footer, FooterTab, SwipeRow } from "native-base";
-import { TouchableOpacity, View, FlatList } from "react-native";
+import { Container, Header, Left, Right, Content, Body, Title, Subtitle, Icon, Button, Text, Card, CardItem, Footer, FooterTab, Spinner } from "native-base";
+import { TouchableOpacity, TouchableHighlight, View, FlatList, StyleSheet, Dimensions } from "react-native";
 import { StackNavigator } from "react-navigation";
 import { connect } from "react-redux";
+import QuizCard from './QuizCard';
 
 class QuizView extends React.Component {
   state = { questions: [],
             correctCount: 0,
-            missedCount: 0 };
+            missedCount: 0,
+            allCardsViewed: false,
+            currentIndex: 0,
+            cardFlipped: false
+          };
 
   componentDidMount() {
     const { decks, navigation } = this.props;
@@ -18,7 +23,8 @@ class QuizView extends React.Component {
     console.log("Deck to quiz: ", deck);
     let questions = deck.cards.map((entry) => {
       return {question: entry.question,
-              answer: entry.answer};
+              answer: entry.answer,
+              marked: ''};
     });
     this.setState({questions: questions});
   }
@@ -41,28 +47,26 @@ class QuizView extends React.Component {
           </Body>
           <Right />
         </Header>
-        <Content padder>
-        </Content>
-        <Footer>
-          <FooterTab style={{backgroundColor: '#272727'}}>
-            <Button vertical
-              onPress={() => {
-                console.log("Question Correct");
-                this.setState({correctCount: this.state.correctCount+1});
-              }}
-            >
-              <Icon type='MaterialIcons' name='check-circle' color='green' />
-            </Button>
-            <Button vertical
-              onPress={() => {
-                console.log("Question Missed");
-                this.setState({missedCount: this.state.missedCount+1});
-              }}
-            >
-              <Icon type='MaterialIcons' name='cancel' color='red' />
-            </Button>
-          </FooterTab>
-        </Footer>
+        <FlatList
+          horizontal
+          pagingEnabled
+          directionalLockEnabled
+          showsHorizontalScrollIndicator
+          data={this.state.questions}
+          keyExtractor={item => item.question.toString()}
+          renderItem={({item}) => {
+            return (
+              <QuizCard question={item.question} answer={item.answer} />
+            )
+          }}
+          ListEmptyComponent={() => {
+            return (
+              <Content padder>
+                <Spinner color='white' />
+              </Content>
+            )
+          }}
+        />
       </Container>
     );
   }
@@ -72,3 +76,22 @@ const mapStateToProps = state => {
 };
 
 export default connect(mapStateToProps, null)(QuizView);
+
+// <FlatList
+//   pagingEnabled
+//   horizontal
+//   showsHorizontalScrollIndicator
+//   directionalLockEnabled
+//   data={this.state.questions}
+//   keyExtractor={item => item.question.toString()}
+//   renderItem={({item}) => {
+//     return (
+//       <QuizCard question={item.question} answer={item.answer} />
+//     )
+//   }}
+// />
+// {!this.state.cardFlipped ? (
+//   <Text style={{color: "white", fontWeight: 'bold'}}>card facing front</Text>
+// ) : (
+//   <Text style={{color: "white", fontWeight: 'bold'}}>card facing back</Text>
+// )}

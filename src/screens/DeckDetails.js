@@ -57,6 +57,13 @@ class DeckDetails extends React.Component {
           <Card>
             <CardItem header bordered>
               <Left>
+                <Body>
+                  <Text>{deck.shortName}</Text>
+                  <Text>{deck.description}</Text>
+                </Body>
+              </Left>
+              {(deck && deck.cards.length !== 0) ? (
+                <Right>
                 <Button vertical
                   onPress={() => {
                     console.log("Starting Quiz");
@@ -66,11 +73,10 @@ class DeckDetails extends React.Component {
                   <Icon type='MaterialCommunityIcons' name='book-open-page-variant' />
                   <Text>Quiz</Text>
                 </Button>
-                <Body>
-                  <Text>{deck.shortName}</Text>
-                  <Text>{deck.description}</Text>
-                </Body>
-              </Left>
+                </Right>
+              ) : (
+                <Right />
+              )}
             </CardItem>
             <CardItem>
                 <View style={{ flex: 1}}>
