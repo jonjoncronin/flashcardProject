@@ -20,7 +20,7 @@ class QuizCard extends React.Component {
             <Text style={{textAlign: 'center', color:'white', fontWeight: 'bold', fontSize: 25}}>
               {!this.state.cardFlipped ? this.props.question: this.props.answer}
             </Text>
-            <Text style={{textAlign: 'center', color:'white'}}>{this.props.index}/{this.props.total}</Text>
+            <Text style={{textAlign: 'center', color:'white', fontSize: 12}}>card {this.props.index + 1} of {this.props.total}</Text>
           </View>
         </TouchableOpacity>
         <View style={{flex:.25, flexDirection: 'row', marginTop:10, justifyContent:'space-evenly', alignContent: 'center'}}>
