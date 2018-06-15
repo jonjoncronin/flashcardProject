@@ -96,7 +96,7 @@ class QuizView extends React.Component {
         <Header style={{backgroundColor: '#272727'}}>
           <Left>
             <Button transparent onPress={() => this.renderAlertPopup()}>
-              <Icon type='MaterialIcons' name='arrow-back' style={{color:'white'}}/>
+              <Icon type='MaterialIcons' name='done-all' style={{color:'white'}}/>
             </Button>
           </Left>
           <Body>
