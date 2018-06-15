@@ -3,6 +3,7 @@ import { Container, Header, Left, Right, Content, Body, Title, Subtitle, Icon, B
 import { TouchableOpacity, TouchableHighlight, View, FlatList, StyleSheet, Dimensions, Alert } from "react-native";
 import { StackNavigator } from "react-navigation";
 import { connect } from "react-redux";
+import { handleQuizScoreAdd } from "../actions"
 import QuizCard from './QuizCard';
 
 class QuizView extends React.Component {
@@ -55,6 +56,8 @@ class QuizView extends React.Component {
   }
 
   renderAlertPopup = () => {
+    const { navigation, handleQuizScoreAdd } = this.props;
+    const deckID = navigation.getParam("deckID", {});
     const cards = this.state.cards;
     let scoredCount = cards.reduce(this.getScored, 0);
     let correctCount = cards.reduce(this.getCorrect, 0);
@@ -80,7 +83,10 @@ class QuizView extends React.Component {
       Alert.alert('Quiz Completed', msg, [
         {
           text: 'Ok',
-          onPress: () => this.props.navigation.goBack(),
+          onPress: (() => {
+            handleQuizScoreAdd(deckID, {correct: correctCount, total: scoredCount});
+            navigation.goBack();
+          }),
         }
       ]);
     }
@@ -133,8 +139,16 @@ class QuizView extends React.Component {
     );
   }
 }
+
+const mapDispatchToProps = dispatch => {
+  return {
+    handleQuizScoreAdd: (deckID, score) =>
+      dispatch(handleQuizScoreAdd(deckID, score))
+  };
+};
+
 const mapStateToProps = state => {
   return { decks: state };
 };
 
-export default connect(mapStateToProps, null)(QuizView);
+export default connect(mapStateToProps, mapDispatchToProps)(QuizView);

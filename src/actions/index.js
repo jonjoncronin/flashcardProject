@@ -62,3 +62,14 @@ export const editCard = (deckID, cardID, userInputs) => ({
 export const handleCardEdit = (deckID, cardID, userInputs) => dispatch => {
   dispatch(editCard(deckID, cardID, userInputs));
 };
+
+export const ADD_QUIZ_SCORE = "ADD_QUIZ_SCORE";
+export const addQuizScore = (deckID, score) => ({
+  type: "ADD_QUIZ_SCORE",
+  deckID,
+  score
+});
+
+export const handleQuizScoreAdd = (deckID, score) => dispatch => {
+  dispatch(addQuizScore(deckID, score));
+};

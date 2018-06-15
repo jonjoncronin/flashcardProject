@@ -16,7 +16,8 @@ const initialDecks = [
         question: "What is your quest?",
         answer: "To seek the Holy Grail"
       }
-    ]
+    ],
+    scores: []
   },
   {
     id: uuidv1(),
@@ -33,13 +34,15 @@ const initialDecks = [
         question: "What is Michael Jordans jersey number?",
         answer: "23"
       }
-    ]
+    ],
+    scores: []
   },
   {
     id: uuidv1(),
     shortName: "1234567890123456...",
     description: "LongLongDescription",
-    cards: []
+    cards: [],
+    scores: []
   }
 ];
 
@@ -52,7 +55,8 @@ function decks(state = initialDecks, action) {
         id: uuidv1(),
         shortName: shortName,
         description: description,
-        cards: []
+        cards: [],
+        scores: []
       }
 
       newDecks.push(deck);
@@ -139,11 +143,38 @@ function decks(state = initialDecks, action) {
           cardToEdit.question = action.userInputs.question;
           cardToEdit.answer = action.userInputs.answer;
           // Update the backend DB while you're at it.
+
           return newDecks;
         }
         else {
           return state;
         }
+      }
+      else {
+        return state;
+      }
+    }
+
+    case "ADD_QUIZ_SCORE": {
+      let newDecks = JSON.parse(JSON.stringify(state));
+      let deckToEdit = newDecks.find(deck => {
+        return deck.id === action.deckID;
+      });
+
+      if(deckToEdit) {
+        let { correct, total } = action.score;
+        let newScore = {
+          id: uuidv1(),
+          correct: correct,
+          total: total
+        }
+        deckToEdit.scores.unshift(newScore);
+        if(deckToEdit.scores.length > 3)
+        {
+          deckToEdit.scores.pop();
+        }
+        // Update the backend DB while you're at it.
+        return newDecks;
       }
       else {
         return state;

@@ -78,6 +78,19 @@ class DeckDetails extends React.Component {
                 <Right />
               )}
             </CardItem>
+            <CardItem bordered>
+              <Body>
+                <Text>Last Quiz Scores: </Text>
+                {(deck && deck.scores.length !== 0) ? (
+                  deck.scores.map((score) => (
+                    <Text key={score.id}>{(score.correct/score.total)*100}% correct</Text>
+                  ))
+                ) :
+                <Text>None recorded yet</Text>
+
+                }
+              </Body>
+            </CardItem>
             <CardItem>
                 <View style={{ flex: 1}}>
                 <Text>Questions ({deck ? deck.cards.length:0}):</Text>
