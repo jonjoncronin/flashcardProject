@@ -2,6 +2,7 @@ import React from "react";
 import { createStore } from "redux";
 import { Provider } from "react-redux";
 import configureStore from "./store/configureStore";
+import { fetchDecks } from './actions';
 import { createStackNavigator } from "react-navigation";
 import { View, StatusBar } from "react-native";
 import { Constants } from "expo";
@@ -17,6 +18,10 @@ import CardEdit from "./screens/CardEdit";
 import QuizView from "./screens/QuizView";
 
 const store = configureStore();
+
+store.dispatch(fetchDecks()).then(() => {
+  console.log("App Store state: ", store.getState());
+});
 
 function GenericStatusBar({ backgroundColor, ...props}) {
   return (

@@ -1,3 +1,16 @@
+import * as DecksAPI from "../utils/dbApi";
+
+export const RECEIVE_DECKS = "RECEIVE_DECKS";
+export const receiveDecks = decks => ({
+  type: "RECEIVE_DECKS",
+  decks
+});
+
+export const fetchDecks = () => dispatch =>
+  DecksAPI.getAllDecks().then(decks =>
+    dispatch(receiveDecks(decks))
+  );
+
 export const ADD_DECK = "ADD_DECK";
 export const addDeck = userInputs => ({
   type: "ADD_DECK",

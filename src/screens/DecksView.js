@@ -6,6 +6,7 @@ import { TouchableOpacity, View, FlatList } from "react-native";
 // import DeckInput from "./DeckInput";
 
 class DecksView extends React.Component {
+
   renderListItem = ({ item }) => {
     const navigation = this.props.navigation;
     return (
@@ -86,7 +87,7 @@ class DecksView extends React.Component {
           </Right>
         </Header>
         <Content>
-        {decks.length !== 0 ? (
+        {(decks && decks.length !== 0) ? (
           <View style={{ flex: 1, margin: 10, backgroundColor: "white" }}>
             <FlatList
               data={decks}
