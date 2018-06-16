@@ -49,8 +49,8 @@ class CardEdit extends React.Component {
     console.log("Card to edit: ", cardID);
 
     return (
-      <Container style={{ flex: 1, backgroundColor: "#747474"}}>
-        <Header style={{backgroundColor: '#272727'}}>
+      <Container style={{ flex: 1, backgroundColor: "#5D5C61"}}>
+        <Header style={{backgroundColor: '#938E94'}}>
           <Left>
             <Button transparent onPress={() => navigation.goBack()}>
               <Icon type='MaterialIcons' name='arrow-back' style={{color:'white'}}/>

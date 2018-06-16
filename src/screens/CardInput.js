@@ -32,8 +32,8 @@ class CardInput extends React.Component {
     console.log("Deck to add card to: ", deckID);
 
     return (
-      <Container style={{ flex: 1, backgroundColor: "#747474"}}>
-        <Header style={{backgroundColor: '#272727'}}>
+      <Container style={{ flex: 1, backgroundColor: "#5D5C61"}}>
+        <Header style={{backgroundColor: '#938E94'}}>
           <Left>
             <Button transparent onPress={() => navigation.goBack()}>
               <Icon type='MaterialIcons' name='arrow-back' style={{color:'white'}}/>
@@ -83,26 +83,3 @@ const mapDispatchToProps = dispatch => {
 };
 
 export default connect(null, mapDispatchToProps)(CardInput);
-
-// <Container>
-//   <Header>
-//     <Left>
-//       <Button transparent onPress={() => this.props.navigation.goBack()}>
-//         <Icon name='arrow-back' />
-//       </Button>
-//     </Left>
-//     <Body>
-//       <Title>Add a Card</Title>
-//     </Body>
-//     <Right />
-//   </Header>
-//   <Content>
-//     <Text>Input to Add a Card</Text>
-//     <Button transparent onPress={() => {
-//       console.log("Submit a card to be added");
-//       this.props.navigation.goBack();
-//       }}>
-//       <Text>Submit</Text>
-//     </Button>
-//   </Content>
-// </Container>

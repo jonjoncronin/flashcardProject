@@ -48,7 +48,7 @@ export default () =>
   <Provider store={store}>
     <View style={{ flex: 1 }}>
       <GenericStatusBar
-        backgroundColor="#747474"
+        backgroundColor="#5D5C61"
         barStyle="light-content"
       />
       <RootStack />

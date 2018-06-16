@@ -9,7 +9,7 @@ class DecksView extends React.Component {
   renderListItem = ({ item }) => {
     const navigation = this.props.navigation;
     return (
-      <TouchableOpacity
+      <TouchableOpacity key={item.id}
         onPress={() => navigation.navigate("DeckDetails", { deckID: item.id })}
       >
         <View
@@ -18,8 +18,7 @@ class DecksView extends React.Component {
             flexDirection: "row",
             alignContent: "center",
             margin: 5,
-            height: 40,
-            backgroundColor: "#14A76C",
+            backgroundColor: "#7395AE",
             elevation: 4,
             shadowOffset: { width: 0, height: 5 },
             shadowColor: '#000000',
@@ -34,12 +33,22 @@ class DecksView extends React.Component {
                 margin: 5,
                 fontSize: 20,
                 fontWeight: "bold",
-                textAlign: "left",
+                textAlign: "center",
                 color: "white"
               }}
-              key={item.id}
             >
               {item.shortName}
+            </Text>
+            <Text
+              style={{
+                margin: 5,
+                fontSize: 12,
+                fontWeight: "100",
+                textAlign: "center",
+                color: "white"
+              }}
+            >
+              {item.cards.length} cards
             </Text>
           </View>
           <View
@@ -60,8 +69,8 @@ class DecksView extends React.Component {
     const { decks } = this.props;
     const navigation = this.props.navigation;
     return (
-      <Container style={{ flex: 1, backgroundColor: "#747474"}}>
-        <Header style={{backgroundColor: '#272727'}}>
+      <Container style={{ flex: 1, backgroundColor: "#5D5C61"}}>
+        <Header style={{backgroundColor: '#938E94'}}>
           <Left />
           <Body>
             <Title style={{color: 'white'}}>My Decks</Title>
@@ -72,7 +81,7 @@ class DecksView extends React.Component {
                 navigation.navigate("NewDeck")
               }}
             >
-              <Icon type='MaterialIcons' name='add-box' style={{fontSize: 30, color:'#FF652F'}} />
+              <Icon type='MaterialIcons' name='add-box' style={{fontSize: 30, color:'white'}} />
             </TouchableOpacity>
           </Right>
         </Header>

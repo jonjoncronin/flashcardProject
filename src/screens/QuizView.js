@@ -98,8 +98,8 @@ class QuizView extends React.Component {
     console.log("QuizView State: ", this.state);
 
     return (
-      <Container style={{ flex: 1, backgroundColor: "#747474"}}>
-        <Header style={{backgroundColor: '#272727'}}>
+      <Container style={{ flex: 1, backgroundColor: "#5D5C61"}}>
+        <Header style={{backgroundColor: '#938E94'}}>
           <Left>
             <Button transparent onPress={() => this.renderAlertPopup()}>
               <Icon type='MaterialIcons' name='done-all' style={{color:'white'}}/>
