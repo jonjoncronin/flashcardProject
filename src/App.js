@@ -17,8 +17,10 @@ import DeckEdit from "./screens/DeckEdit";
 import CardEdit from "./screens/CardEdit";
 import QuizView from "./screens/QuizView";
 
+// Create and configure Redux Store for App state
 const store = configureStore();
 
+// Create and configure AsyncStorage/localStorage - emulate backend DB
 store.dispatch(fetchDecks()).then(() => {
   console.log("App Store state: ", store.getState());
 });
@@ -30,6 +32,7 @@ function GenericStatusBar({ backgroundColor, ...props}) {
     </View>
   )
 }
+
 const RootStack = createStackNavigator(
   {
     Home: DecksView,

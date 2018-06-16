@@ -58,8 +58,8 @@ class DeckDetails extends React.Component {
             <CardItem header bordered>
               <Left>
                 <Body>
-                  <Text>{deck.shortName}</Text>
-                  <Text>{deck.description}</Text>
+                  <Text>{deck ? deck.shortName : ''}</Text>
+                  <Text>{deck ? deck.description : ''}</Text>
                 </Body>
               </Left>
               {(deck && deck.cards.length !== 0) ? (
@@ -131,7 +131,7 @@ class DeckDetails extends React.Component {
               onPress={() => {
                 console.log("deleting Deck: ", deck.id);
                 handleDeckDelete(deck.id);
-                navigation.goBack();
+                navigation.navigate("Home");
               }}
             >
               <Icon type='MaterialIcons' name='delete-forever' />

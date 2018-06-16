@@ -21,7 +21,7 @@ function decks(state = [], action) {
 
       newDecks.push(deck);
       // Update the backend DB while you're at it.
-      DecksAPI.addDeck(deck);
+      DecksAPI.updateDecks(newDecks);
 
       return newDecks;
     }
@@ -31,6 +31,7 @@ function decks(state = [], action) {
         return entry.id !== action.deckID;
       });
       // Update the backend DB while you're at it.
+      DecksAPI.updateDecks(newDecks);
 
       return newDecks;
     }
@@ -45,7 +46,7 @@ function decks(state = [], action) {
       newDecks[deckToEdit].shortName = shortName;
       newDecks[deckToEdit].description = description;
       // Update the backend DB while you're at it.
-
+      DecksAPI.updateDecks(newDecks);
       return newDecks;
     }
 
@@ -64,6 +65,7 @@ function decks(state = [], action) {
         }
         deckToEdit.cards.push(newCard);
       // Update the backend DB while you're at it.
+      DecksAPI.updateDecks(newDecks);
       return newDecks;
       }
       else {
@@ -83,6 +85,7 @@ function decks(state = [], action) {
           return entry.id !== action.cardID;
         });
         // Update the backend DB while you're at it.
+        DecksAPI.updateDecks(newDecks);
         return newDecks;
       }
       else {
@@ -104,7 +107,7 @@ function decks(state = [], action) {
           cardToEdit.question = action.userInputs.question;
           cardToEdit.answer = action.userInputs.answer;
           // Update the backend DB while you're at it.
-
+          DecksAPI.updateDecks(newDecks);
           return newDecks;
         }
         else {
@@ -135,6 +138,7 @@ function decks(state = [], action) {
           deckToEdit.scores.pop();
         }
         // Update the backend DB while you're at it.
+        DecksAPI.updateDecks(newDecks);
         return newDecks;
       }
       else {

@@ -48,20 +48,15 @@ const storeDecks = [
 AsyncStorage.setItem(DECKS_STORAGE_KEY, JSON.stringify(storeDecks));
 
 //==============================================================================
-
-// export const addDeck = (newDeck) => {
-//   console.log("DecksAPI AddDeck: ", newDeck);
-//   AsyncStorage.getItem(DECKS_STORAGE_KEY)
-//     .then(decks => {
-//       decks.push(newDeck);
-//       AsyncStorage.setItem(DECKS_STORAGE_KEY, JSON.stringify(decks));
-//     });
-// }
-
 export const getAllDecks = () =>
   AsyncStorage.getItem(DECKS_STORAGE_KEY)
     .then(res => JSON.parse(res));
-//
+
+export const updateDecks = (newDecks) => {
+  console.log("DecksAPI updateDecks: ", newDecks);
+  AsyncStorage.setItem(DECKS_STORAGE_KEY, JSON.stringify(newDecks));
+}
+
 // export const getDeck = (deckID) => {
 //   let storePromise = AsyncStorage.getItem(DECKS_STORAGE_KEY)
 //     .then((results) => {
