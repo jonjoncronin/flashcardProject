@@ -6,7 +6,7 @@ import { fetchDecks } from './actions';
 import { createStackNavigator } from "react-navigation";
 import { View, StatusBar } from "react-native";
 import { Constants } from "expo";
-
+import { setLocalNotification } from './utils/notificationHelpers';
 /* Screens */
 import DecksView from "./screens/DecksView";
 import DeckDetails from "./screens/DeckDetails";
@@ -52,13 +52,22 @@ const RootStack = createStackNavigator(
   }
 );
 
-export default () =>
-  <Provider store={store}>
-    <View style={{ flex: 1 }}>
-      <GenericStatusBar
-        backgroundColor="#5D5C61"
-        barStyle="light-content"
-      />
-      <RootStack />
-    </View>
-  </Provider>;
+export default class FlashQuizApp extends React.Component {
+  componentDidMount() {
+    setLocalNotification();
+  }
+
+  render() {
+    return(
+      <Provider store={store}>
+        <View style={{ flex: 1 }}>
+          <GenericStatusBar
+            backgroundColor="#5D5C61"
+            barStyle="light-content"
+          />
+          <RootStack />
+        </View>
+      </Provider>
+    )
+  }
+}

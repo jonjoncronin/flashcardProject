@@ -1,6 +1,6 @@
 import * as Expo from "expo";
 import React, { Component } from "react";
-import App from "../App";
+import FlashQuizApp from "../FlashQuizApp";
 
 class Setup extends Component {
   state = {
@@ -23,7 +23,7 @@ class Setup extends Component {
     }
 
     return (
-      <App />
+      <FlashQuizApp />
     );
   }
 }

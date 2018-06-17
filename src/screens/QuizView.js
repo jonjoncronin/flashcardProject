@@ -5,6 +5,7 @@ import { StackNavigator } from "react-navigation";
 import { connect } from "react-redux";
 import { handleQuizScoreAdd } from "../actions"
 import QuizCard from './QuizCard';
+import { clearLocalNotification, setLocalNotification } from '../utils/notificationHelpers';
 
 class QuizView extends React.Component {
   state = { cards: [],
@@ -80,6 +81,12 @@ class QuizView extends React.Component {
       //OnClose attempt to update the store with the score and navigate back
 
       let msg = 'You answered ' + correctCount + ' out of ' + scoredCount + ' questions correctly!';
+
+      // clear local notifications and reschedule another
+      clearLocalNotification()
+      .then(setLocalNotification);
+
+      //Tell the user good job for quiz completion
       Alert.alert('Quiz Completed', msg, [
         {
           text: 'Ok',
