@@ -10,7 +10,7 @@ import { handleDeckEdit } from "../actions"
 
 class DeckEdit extends React.Component {
 
-  state = { shortName: '',
+  state = { title: '',
             description: ''};
 
   handleSubmit = event => {
@@ -32,7 +32,7 @@ class DeckEdit extends React.Component {
     const deckToEdit = decks.find((entry) => {
       return entry.id === deckID;
     });
-    this.setState({shortName: deckToEdit.shortName,
+    this.setState({title: deckToEdit.title,
                    description: deckToEdit.description});
   }
 
@@ -55,11 +55,11 @@ class DeckEdit extends React.Component {
         <Content>
           <Form>
             <Item floatingLabel>
-              <Label style={{color:'white'}}>Deck Name</Label>
+              <Label style={{color:'white'}}>Deck Title</Label>
               <Input
                 style={{color:'white'}}
-                onChangeText={(text) => this.setState({shortName: text})}
-                value={this.state.shortName} />
+                onChangeText={(text) => this.setState({title: text})}
+                value={this.state.title} />
             </Item>
             <Item floatingLabel>
               <Label style={{color:'white'}}>Description</Label>

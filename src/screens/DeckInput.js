@@ -10,7 +10,7 @@ import { handleDeckAdd } from "../actions"
 
 class DeckInput extends React.Component {
 
-  state = { shortName: '',
+  state = { title: '',
             description: ''};
 
   handleSubmit = event => {
@@ -44,11 +44,11 @@ class DeckInput extends React.Component {
         <Content>
           <Form>
             <Item floatingLabel>
-              <Label style={{color:'white'}}>Deck Name</Label>
+              <Label style={{color:'white'}}>Deck Title</Label>
               <Input
                 style={{color:'white'}}
-                onChangeText={(text) => this.setState({shortName: text})}
-                value={this.state.shortName} />
+                onChangeText={(text) => this.setState({title: text})}
+                value={this.state.title} />
             </Item>
             <Item floatingLabel>
               <Label style={{color:'white'}}>Description</Label>

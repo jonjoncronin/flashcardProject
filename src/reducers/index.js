@@ -10,10 +10,10 @@ function decks(state = [], action) {
 
     case "ADD_DECK": {
       let newDecks = [...state];
-      let { shortName, description } = action.userInputs;
+      let { title, description } = action.userInputs;
       let deck = {
         id: uuidv1(),
-        shortName: shortName,
+        title: title,
         description: description,
         cards: [],
         scores: []
@@ -38,12 +38,12 @@ function decks(state = [], action) {
 
     case "EDIT_DECK": {
       let newDecks = [...state];
-      let { shortName, description } = action.userInputs;
+      let { title, description } = action.userInputs;
       let deckToEdit = newDecks.findIndex((entry) => {
         return entry.id === action.deckID;
       });
 
-      newDecks[deckToEdit].shortName = shortName;
+      newDecks[deckToEdit].title = title;
       newDecks[deckToEdit].description = description;
       // Update the backend DB while you're at it.
       DecksAPI.updateDecks(newDecks);

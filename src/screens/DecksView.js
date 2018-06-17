@@ -38,7 +38,7 @@ class DecksView extends React.Component {
                 color: "white"
               }}
             >
-              {item.shortName}
+              {item.title}
             </Text>
             <Text
               style={{

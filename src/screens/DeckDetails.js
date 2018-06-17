@@ -58,7 +58,7 @@ class DeckDetails extends React.Component {
             <CardItem header bordered>
               <Left>
                 <Body>
-                  <Text>{deck ? deck.shortName : ''}</Text>
+                  <Text>{deck ? deck.title : ''}</Text>
                   <Text>{deck ? deck.description : ''}</Text>
                 </Body>
               </Left>
@@ -71,7 +71,7 @@ class DeckDetails extends React.Component {
                   }}
                 >
                   <Icon type='MaterialCommunityIcons' name='book-open-page-variant' />
-                  <Text>Quiz</Text>
+                  <Text>Start Quiz</Text>
                 </Button>
                 </Right>
               ) : (
