@@ -44,6 +44,7 @@ export const DECKS_STORAGE_KEY = 'flashCard:decks';
 //     scores: []
 //   }
 // ];
+// AsyncStorage.setItem(DECKS_STORAGE_KEY, JSON.stringify(storeDecks));
 
 AsyncStorage.setItem(DECKS_STORAGE_KEY, JSON.stringify([]));
 

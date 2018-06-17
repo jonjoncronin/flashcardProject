@@ -64,7 +64,7 @@ class QuizView extends React.Component {
     let correctCount = cards.reduce(this.getCorrect, 0);
     if(scoredCount !== this.state.cards.length) {
       //Alert that the you haven't marked a result for all cards
-      let msg = 'You have only answered ' + scoredCount + ' out of ' + this.state.cards.length + ' questions so far. The quiz score will not be saved if you leave now.';
+      let msg = 'You have only answered ' + scoredCount + ' out of ' + this.state.cards.length + ' questions so far. The quiz score will not be saved if you finish now.';
       Alert.alert('Are you sure?', msg, [
         {
           text: 'Confirm',
@@ -107,15 +107,11 @@ class QuizView extends React.Component {
     return (
       <Container style={{ flex: 1, backgroundColor: "#5D5C61"}}>
         <Header style={{backgroundColor: '#938E94'}}>
-          <Left>
-            <Button transparent onPress={() => this.renderAlertPopup()}>
-              <Icon type='MaterialIcons' name='done-all' style={{color:'white'}}/>
+          <Body style={{flex:1, flexDirection: 'row', justifyContent: 'flex-end', alignContent: 'center'}}>
+            <Button style={{justifyContent: 'center', alignContent: 'center'}} onPress={() => this.renderAlertPopup()}>
+              <Text>Finish</Text>
             </Button>
-          </Left>
-          <Body>
-            <Title style={{color: 'white'}}>Quiz</Title>
           </Body>
-          <Right />
         </Header>
         <FlatList
           horizontal
