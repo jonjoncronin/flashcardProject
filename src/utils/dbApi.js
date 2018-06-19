@@ -64,6 +64,5 @@ export const getAllDecks = () =>
  * @param  {Array} newDecks an array of decks to store
  */
 export const updateDecks = newDecks => {
-  console.log("DecksAPI updateDecks: ", newDecks);
   AsyncStorage.setItem(DECKS_STORAGE_KEY, JSON.stringify(newDecks));
 };

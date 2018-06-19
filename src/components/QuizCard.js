@@ -16,7 +16,6 @@ class QuizCard extends React.Component {
   };
 
   render() {
-    console.log("QuizCard Comp Props: ", this.props);
     return (
       <View
         style={{
@@ -119,7 +118,3 @@ class QuizCard extends React.Component {
 }
 
 export default QuizCard;
-
-// <Text>
-//   this is really really long text that should take up multiple lines without trying and even with small fonts
-// </Text>

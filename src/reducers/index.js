@@ -4,7 +4,7 @@ import { AsyncStorage } from "react-native";
 
 /**
  * Reducer for the decks state variable.
- * @param  {Array}  [state=[]] 
+ * @param  {Array}  [state=[]]
  * @param  {[type]} action
  * @return {Array}  the updated decks state variable
  */
@@ -79,7 +79,6 @@ function decks(state = [], action) {
     }
 
     case "DELETE_CARD": {
-      console.log("CardDelete Actions: ", action);
       let newDecks = JSON.parse(JSON.stringify(state));
       let deckToEdit = newDecks.find(deck => {
         return deck.id === action.deckID;

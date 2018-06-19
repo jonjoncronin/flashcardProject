@@ -8,7 +8,6 @@ const NOTIFICATION_KEY = "flashCard:notifications";
  * @return {Promise} Promise returned by AsyncStorage API
  */
 export function clearLocalNotification() {
-  console.log("LocalNotification getting cleared.");
   return AsyncStorage.removeItem(NOTIFICATION_KEY).then(
     Notifications.cancelAllScheduledNotificationsAsync
   );
@@ -39,7 +38,6 @@ function createNotification() {
  * flashQuiz today.
  */
 export function setLocalNotification() {
-  console.log("LocalNotification getting set.");
   AsyncStorage.getItem(NOTIFICATION_KEY)
     .then(JSON.parse)
     .then(data => {

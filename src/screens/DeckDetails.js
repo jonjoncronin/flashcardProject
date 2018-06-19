@@ -58,13 +58,11 @@ class DeckDetails extends React.Component {
   };
 
   render() {
-    console.log("DeckDetails View Props: ", this.props);
     const { decks, navigation, handleDeckDelete } = this.props;
     const deckID = navigation.getParam("deckID", {});
     const deck = decks.find(entry => {
       return entry.id === deckID;
     });
-    console.log("Deck to detail: ", deck);
     return (
       <Container style={{ flex: 1, backgroundColor: "#5D5C61" }}>
         <Header style={{ backgroundColor: "#938E94" }}>
@@ -147,7 +145,6 @@ class DeckDetails extends React.Component {
             <Button
               vertical
               onPress={() => {
-                console.log("Adding Card");
                 navigation.navigate("NewCard", { deckID: deck.id });
               }}
             >
@@ -157,7 +154,6 @@ class DeckDetails extends React.Component {
             <Button
               vertical
               onPress={() => {
-                console.log("Editting Deck");
                 navigation.navigate("EditDeck", { deckID: deck.id });
               }}
             >
@@ -167,7 +163,6 @@ class DeckDetails extends React.Component {
             <Button
               vertical
               onPress={() => {
-                console.log("deleting Deck: ", deck.id);
                 handleDeckDelete(deck.id);
                 navigation.navigate("Home");
               }}
@@ -196,23 +191,3 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(DeckDetails);
-// <Container>
-//   <Header>
-//   <Left>
-//     <Button transparent onPress={() => this.props.navigation.goBack()}>
-//       <Icon name='arrow-back' />
-//     </Button>
-//   </Left>
-//     <Body>
-//       <Title>Deck Details</Title>
-//     </Body>
-//     <Right>
-//       <Button transparent onPress={() => this.props.navigation.navigate("CardInput")}>
-//         <Icon type="MaterialIcons" name='add-circle-outline' />
-//       </Button>
-//     </Right>
-//   </Header>
-//   <Content>
-//     <Text>See the deck details</Text>
-//   </Content>
-// </Container>

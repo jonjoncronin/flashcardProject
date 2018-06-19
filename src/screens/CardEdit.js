@@ -19,8 +19,6 @@ import { TouchableOpacity, View, FlatList } from "react-native";
 import { StackNavigator } from "react-navigation";
 import { connect } from "react-redux";
 import { handleCardEdit } from "../actions";
-// import DeckDetails from './components/DeckDetails';
-// import DeckInput from './components/DeckInput';
 
 class CardEdit extends React.Component {
   state = {
@@ -33,8 +31,6 @@ class CardEdit extends React.Component {
     const deckID = navigation.getParam("deckID", {});
     const cardID = navigation.getParam("cardID", {});
     const userInputs = this.state;
-    console.log("Editing a card to the deck: ", deckID);
-    console.log("New Card Inputs: ", userInputs);
     // call your redux action creator
     if (handleCardEdit) {
       handleCardEdit(deckID, cardID, userInputs);
@@ -59,12 +55,9 @@ class CardEdit extends React.Component {
   }
 
   render() {
-    console.log("CardEdit View Props: ", this.props);
     const { navigation, handleCardEdit } = this.props;
     const deckID = navigation.getParam("deckID", {});
-    console.log("Deck to edit card on: ", deckID);
     const cardID = navigation.getParam("cardID", {});
-    console.log("Card to edit: ", cardID);
 
     return (
       <Container style={{ flex: 1, backgroundColor: "#5D5C61" }}>
@@ -136,26 +129,3 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(CardEdit);
-
-// <Container>
-//   <Header>
-//     <Left>
-//       <Button transparent onPress={() => this.props.navigation.goBack()}>
-//         <Icon name='arrow-back' />
-//       </Button>
-//     </Left>
-//     <Body>
-//       <Title>Add a Card</Title>
-//     </Body>
-//     <Right />
-//   </Header>
-//   <Content>
-//     <Text>Input to Add a Card</Text>
-//     <Button transparent onPress={() => {
-//       console.log("Submit a card to be added");
-//       this.props.navigation.goBack();
-//       }}>
-//       <Text>Submit</Text>
-//     </Button>
-//   </Content>
-// </Container>

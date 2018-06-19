@@ -33,8 +33,6 @@ class DeckEdit extends React.Component {
     const { navigation, handleDeckEdit } = this.props;
     const deckID = navigation.getParam("deckID", {});
     const userInputs = this.state;
-    console.log("Editting a deck");
-    console.log("New Deck Inputs: ", userInputs);
     // call your redux action creator
     if (handleDeckEdit) {
       handleDeckEdit(deckID, userInputs);
@@ -55,7 +53,6 @@ class DeckEdit extends React.Component {
   }
 
   render() {
-    console.log("DeckEdit View Props: ", this.props);
     const navigation = this.props.navigation;
     return (
       <Container style={{ flex: 1, backgroundColor: "#5D5C61" }}>

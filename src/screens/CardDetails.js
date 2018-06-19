@@ -23,7 +23,6 @@ import { handleCardDelete } from "../actions";
 
 class CardDetails extends React.Component {
   render() {
-    console.log("CardDetails View Props: ", this.props);
     const { decks, navigation, handleCardDelete } = this.props;
     const deckID = navigation.getParam("deckID", {});
     const cardID = navigation.getParam("cardID", {});
@@ -34,7 +33,6 @@ class CardDetails extends React.Component {
       return entry.id === cardID;
     });
 
-    console.log("Card to detail: ", card);
     return (
       <Container style={{ flex: 1, backgroundColor: "#5D5C61" }}>
         <Header style={{ backgroundColor: "#938E94" }}>
@@ -72,7 +70,6 @@ class CardDetails extends React.Component {
             <Button
               vertical
               onPress={() => {
-                console.log("editting Card: ", card.id);
                 navigation.navigate("EditCard", {
                   deckID: deck.id,
                   cardID: card.id
@@ -85,7 +82,6 @@ class CardDetails extends React.Component {
             <Button
               vertical
               onPress={() => {
-                console.log("deleting Card: ", card.id);
                 handleCardDelete(deck.id, card.id);
                 navigation.goBack();
               }}

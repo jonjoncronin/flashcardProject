@@ -42,7 +42,6 @@ class QuizView extends React.Component {
   };
 
   updateResult(index, result) {
-    console.log("QuizView called from QuizCard: ", index, result);
     let cardsToUpdate = this.state.cards;
     cardsToUpdate[index].result = result;
     this.setState({ cards: cardsToUpdate });
@@ -54,7 +53,6 @@ class QuizView extends React.Component {
     const deck = decks.find(entry => {
       return entry.id === deckID;
     });
-    console.log("Deck to quiz: ", deck);
     let cards = deck.cards.map(entry => {
       return {
         question: entry.question,
@@ -141,9 +139,7 @@ class QuizView extends React.Component {
   };
 
   render() {
-    console.log("QuizView Props: ", this.props);
     const { navigation } = this.props;
-    console.log("QuizView State: ", this.state);
 
     return (
       <Container style={{ flex: 1, backgroundColor: "#5D5C61" }}>

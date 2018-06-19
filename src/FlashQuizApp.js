@@ -24,9 +24,7 @@ import QuizView from "./screens/QuizView";
 const store = configureStore();
 
 // Create and configure AsyncStorage/localStorage - emulate backend DB
-store.dispatch(fetchDecks()).then(() => {
-  console.log("App Store state: ", store.getState());
-});
+store.dispatch(fetchDecks());
 
 /**
  * Stateless function component that wraps a StatusBar component. This

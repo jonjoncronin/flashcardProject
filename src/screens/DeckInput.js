@@ -32,8 +32,6 @@ class DeckInput extends React.Component {
   handleSubmit = event => {
     const { navigation, handleDeckAdd } = this.props;
     const userInputs = this.state;
-    console.log("Adding a new deck");
-    console.log("New Deck Inputs: ", userInputs);
     // call your redux action creator
     if (handleDeckAdd) {
       handleDeckAdd(userInputs);
@@ -42,7 +40,6 @@ class DeckInput extends React.Component {
   };
 
   render() {
-    console.log("DeckInput View Props: ", this.props);
     const navigation = this.props.navigation;
     return (
       <Container style={{ flex: 1, backgroundColor: "#5D5C61" }}>

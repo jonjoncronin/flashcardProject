@@ -26,7 +26,6 @@ class DecksView extends React.Component {
   };
 
   render() {
-    console.log("Decks View props: ", this.props);
     const { decks } = this.props;
     const navigation = this.props.navigation;
     return (

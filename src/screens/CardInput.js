@@ -19,8 +19,6 @@ import { TouchableOpacity, View, FlatList } from "react-native";
 import { StackNavigator } from "react-navigation";
 import { connect } from "react-redux";
 import { handleCardAdd } from "../actions";
-// import DeckDetails from './components/DeckDetails';
-// import DeckInput from './components/DeckInput';
 
 class CardInput extends React.Component {
   state = {
@@ -32,8 +30,6 @@ class CardInput extends React.Component {
     const { navigation, handleCardAdd } = this.props;
     const deckID = navigation.getParam("deckID", {});
     const userInputs = this.state;
-    console.log("Adding a new card to the deck: ", deckID);
-    console.log("New Card Inputs: ", userInputs);
     // call your redux action creator
     if (handleCardAdd) {
       handleCardAdd(deckID, userInputs);
@@ -42,10 +38,8 @@ class CardInput extends React.Component {
   };
 
   render() {
-    console.log("CardInput View Props: ", this.props);
     const { navigation, handleCardAdd } = this.props;
     const deckID = navigation.getParam("deckID", {});
-    console.log("Deck to add card to: ", deckID);
 
     return (
       <Container style={{ flex: 1, backgroundColor: "#5D5C61" }}>
