@@ -1,4 +1,12 @@
 import React from "react";
+import { StackNavigator } from "react-navigation";
+import { connect } from "react-redux";
+import { handleQuizScoreAdd } from "../actions";
+import QuizCard from "../components/QuizCard";
+import {
+  clearLocalNotification,
+  setLocalNotification
+} from "../utils/notificationHelpers";
 import {
   Container,
   Header,
@@ -26,14 +34,6 @@ import {
   Dimensions,
   Alert
 } from "react-native";
-import { StackNavigator } from "react-navigation";
-import { connect } from "react-redux";
-import { handleQuizScoreAdd } from "../actions";
-import QuizCard from "../components/QuizCard";
-import {
-  clearLocalNotification,
-  setLocalNotification
-} from "../utils/notificationHelpers";
 
 class QuizView extends React.Component {
   state = {

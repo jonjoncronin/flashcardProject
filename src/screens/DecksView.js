@@ -18,7 +18,6 @@ import {
   Text
 } from "react-native";
 
-
 class DecksView extends React.Component {
   renderListItem = ({ item }) => {
     const navigation = this.props.navigation;

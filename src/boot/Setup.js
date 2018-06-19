@@ -1,13 +1,13 @@
 import * as Expo from "expo";
-import React, { Component } from "react";
+import React from "react";
 import FlashQuizApp from "../FlashQuizApp";
 
 /**
  * Setup Component allows for loading of Expo components. Follows the pattern
  * laid out by Expo examples.
- * @extends Component
+ * @extends React
  */
-class Setup extends Component {
+class Setup extends React.Component {
   state = {
     isReady: false
   };

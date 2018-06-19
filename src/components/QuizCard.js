@@ -1,4 +1,5 @@
 import React from "react";
+import { connect } from "react-redux";
 import { Icon } from "native-base";
 import {
   TouchableOpacity,
@@ -7,7 +8,6 @@ import {
   Text,
   Dimensions
 } from "react-native";
-import { connect } from "react-redux";
 
 class QuizCard extends React.Component {
   state = {

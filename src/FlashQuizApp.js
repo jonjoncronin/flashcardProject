@@ -23,7 +23,7 @@ import QuizView from "./screens/QuizView";
  */
 const store = configureStore();
 
-// Create and configure AsyncStorage/localStorage - emulate backend DB
+// Get the stored decks from the backendDB/AsyncStorage file
 store.dispatch(fetchDecks());
 
 /**
@@ -67,11 +67,8 @@ const RootStack = createStackNavigator(
 );
 
 export default class FlashQuizApp extends React.Component {
-
-  /**
-   * Upon application mounting local notifications should be set so that
-   * the user will get a daily FlashQuiz notification.
-   */
+  // Upon application mounting local notifications should be set so that
+  // the user will get a daily FlashQuiz notification.
   componentDidMount() {
     setLocalNotification();
   }

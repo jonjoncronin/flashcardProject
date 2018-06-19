@@ -1,4 +1,6 @@
 import React from "react";
+import { connect } from "react-redux";
+import { handleDeckEdit } from "../actions";
 import {
   Container,
   Header,
@@ -16,12 +18,6 @@ import {
   Input
 } from "native-base";
 import { TouchableOpacity, View, FlatList } from "react-native";
-import { StackNavigator } from "react-navigation";
-import { connect } from "react-redux";
-import { handleDeckEdit } from "../actions";
-
-// import DeckDetails from './components/DeckDetails';
-// import DeckInput from './components/DeckInput';
 
 class DeckEdit extends React.Component {
   state = {

@@ -1,4 +1,6 @@
 import React from "react";
+import { connect } from "react-redux";
+import { handleDeckDelete } from "../actions";
 import {
   Container,
   Header,
@@ -18,9 +20,6 @@ import {
   SwipeRow
 } from "native-base";
 import { TouchableOpacity, View, FlatList } from "react-native";
-import { StackNavigator } from "react-navigation";
-import { connect } from "react-redux";
-import { handleDeckDelete } from "../actions";
 
 class DeckDetails extends React.Component {
   renderListItem = ({ item }) => {

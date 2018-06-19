@@ -1,4 +1,6 @@
 import React from "react";
+import { connect } from "react-redux";
+import { handleCardDelete } from "../actions";
 import {
   Container,
   Header,
@@ -17,9 +19,6 @@ import {
   FooterTab
 } from "native-base";
 import { TouchableOpacity, View } from "react-native";
-import { StackNavigator } from "react-navigation";
-import { connect } from "react-redux";
-import { handleCardDelete } from "../actions";
 
 class CardDetails extends React.Component {
   render() {

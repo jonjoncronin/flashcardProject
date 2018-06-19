@@ -1,4 +1,6 @@
 import React from "react";
+import { connect } from "react-redux";
+import { handleCardEdit } from "../actions";
 import {
   Container,
   Header,
@@ -16,9 +18,6 @@ import {
   Input
 } from "native-base";
 import { TouchableOpacity, View, FlatList } from "react-native";
-import { StackNavigator } from "react-navigation";
-import { connect } from "react-redux";
-import { handleCardEdit } from "../actions";
 
 class CardEdit extends React.Component {
   state = {
