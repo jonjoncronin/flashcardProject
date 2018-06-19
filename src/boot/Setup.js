@@ -12,19 +12,15 @@ class Setup extends Component {
       Roboto: require("native-base/Fonts/Roboto.ttf"),
       Roboto_medium: require("native-base/Fonts/Roboto_medium.ttf")
     });
-    this.setState({isReady: true});
+    this.setState({ isReady: true });
   }
 
   render() {
     if (!this.state.isReady) {
-      return (
-        <Expo.AppLoading />
-      );
+      return <Expo.AppLoading />;
     }
 
-    return (
-      <FlashQuizApp />
-    );
+    return <FlashQuizApp />;
   }
 }
 

@@ -1,17 +1,33 @@
 import React from "react";
-import { Container, Header, Left, Right, Content, Body, Title, Icon, Button, Text, Form, Item, Label, Input } from "native-base";
+import {
+  Container,
+  Header,
+  Left,
+  Right,
+  Content,
+  Body,
+  Title,
+  Icon,
+  Button,
+  Text,
+  Form,
+  Item,
+  Label,
+  Input
+} from "native-base";
 import { TouchableOpacity, View, FlatList } from "react-native";
 import { StackNavigator } from "react-navigation";
 import { connect } from "react-redux";
-import { handleDeckEdit } from "../actions"
+import { handleDeckEdit } from "../actions";
 
 // import DeckDetails from './components/DeckDetails';
 // import DeckInput from './components/DeckInput';
 
 class DeckEdit extends React.Component {
-
-  state = { title: '',
-            description: ''};
+  state = {
+    title: "",
+    description: ""
+  };
 
   handleSubmit = event => {
     const { navigation, handleDeckEdit } = this.props;
@@ -20,59 +36,72 @@ class DeckEdit extends React.Component {
     console.log("Editting a deck");
     console.log("New Deck Inputs: ", userInputs);
     // call your redux action creator
-    if(handleDeckEdit) {
+    if (handleDeckEdit) {
       handleDeckEdit(deckID, userInputs);
     }
     navigation.goBack();
-  }
+  };
 
   componentDidMount() {
     const { navigation, decks } = this.props;
     const deckID = navigation.getParam("deckID", {});
-    const deckToEdit = decks.find((entry) => {
+    const deckToEdit = decks.find(entry => {
       return entry.id === deckID;
     });
-    this.setState({title: deckToEdit.title,
-                   description: deckToEdit.description});
+    this.setState({
+      title: deckToEdit.title,
+      description: deckToEdit.description
+    });
   }
 
   render() {
     console.log("DeckEdit View Props: ", this.props);
     const navigation = this.props.navigation;
     return (
-      <Container style={{ flex: 1, backgroundColor: "#5D5C61"}}>
-        <Header style={{backgroundColor: '#938E94'}}>
+      <Container style={{ flex: 1, backgroundColor: "#5D5C61" }}>
+        <Header style={{ backgroundColor: "#938E94" }}>
           <Left>
             <Button transparent onPress={() => navigation.goBack()}>
-              <Icon type='MaterialIcons' name='arrow-back' style={{color:'white'}}/>
+              <Icon
+                type="MaterialIcons"
+                name="arrow-back"
+                style={{ color: "white" }}
+              />
             </Button>
           </Left>
           <Body>
-            <Title style={{color: 'white'}}>Edit a deck</Title>
+            <Title style={{ color: "white" }}>Edit a deck</Title>
           </Body>
           <Right />
         </Header>
         <Content>
           <Form>
             <Item floatingLabel>
-              <Label style={{color:'white'}}>Deck Title</Label>
+              <Label style={{ color: "white" }}>Deck Title</Label>
               <Input
-                style={{color:'white'}}
-                onChangeText={(text) => this.setState({title: text})}
-                value={this.state.title} />
+                style={{ color: "white" }}
+                onChangeText={text => this.setState({ title: text })}
+                value={this.state.title}
+              />
             </Item>
             <Item floatingLabel>
-              <Label style={{color:'white'}}>Description</Label>
+              <Label style={{ color: "white" }}>Description</Label>
               <Input
-                style={{color:'white'}}
-                onChangeText={(text) => this.setState({description: text})}
-                value={this.state.description} />
+                style={{ color: "white" }}
+                onChangeText={text => this.setState({ description: text })}
+                value={this.state.description}
+              />
             </Item>
-            <View style={{flex: 1, flexDirection: 'row', margin: 10, alignContent: 'center', justifyContent: 'center'}}>
-              <Button
-                light
-                onPress={this.handleSubmit}
-              >
+            <View
+              style={{
+                flex: 1,
+                flexDirection: "row",
+                margin: 10,
+                alignContent: "center",
+                justifyContent: "center"
+              }}
+            >
+              <Button light onPress={this.handleSubmit}>
                 <Text>Edit Deck</Text>
               </Button>
             </View>
@@ -93,4 +122,7 @@ const mapStateToProps = state => {
   return { decks: state };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(DeckEdit);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(DeckEdit);

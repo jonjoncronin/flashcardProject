@@ -1,7 +1,7 @@
-import { AsyncStorage } from 'react-native';
+import { AsyncStorage } from "react-native";
 import uuidv1 from "uuid";
 
-export const DECKS_STORAGE_KEY = 'flashCard:decks';
+export const DECKS_STORAGE_KEY = "flashCard:decks";
 
 //==============================================================================
 // Setup LocalStorage of flashCard:decks data - prepopulate with dummy data for
@@ -50,10 +50,9 @@ AsyncStorage.setItem(DECKS_STORAGE_KEY, JSON.stringify(storeDecks));
 
 //==============================================================================
 export const getAllDecks = () =>
-  AsyncStorage.getItem(DECKS_STORAGE_KEY)
-    .then(res => JSON.parse(res));
+  AsyncStorage.getItem(DECKS_STORAGE_KEY).then(res => JSON.parse(res));
 
-export const updateDecks = (newDecks) => {
+export const updateDecks = newDecks => {
   console.log("DecksAPI updateDecks: ", newDecks);
   AsyncStorage.setItem(DECKS_STORAGE_KEY, JSON.stringify(newDecks));
-}
+};

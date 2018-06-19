@@ -7,9 +7,7 @@ export const receiveDecks = decks => ({
 });
 
 export const fetchDecks = () => dispatch =>
-  DecksAPI.getAllDecks().then(decks =>
-    dispatch(receiveDecks(decks))
-  );
+  DecksAPI.getAllDecks().then(decks => dispatch(receiveDecks(decks)));
 
 export const ADD_DECK = "ADD_DECK";
 export const addDeck = userInputs => ({

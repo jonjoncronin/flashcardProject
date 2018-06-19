@@ -1,6 +1,6 @@
 import uuidv1 from "uuid";
-import * as DecksAPI from '../utils/dbApi';
-import { AsyncStorage } from 'react-native';
+import * as DecksAPI from "../utils/dbApi";
+import { AsyncStorage } from "react-native";
 
 function decks(state = [], action) {
   switch (action.type) {
@@ -17,7 +17,7 @@ function decks(state = [], action) {
         description: description,
         cards: [],
         scores: []
-      }
+      };
 
       newDecks.push(deck);
       // Update the backend DB while you're at it.
@@ -39,7 +39,7 @@ function decks(state = [], action) {
     case "EDIT_DECK": {
       let newDecks = [...state];
       let { title, description } = action.userInputs;
-      let deckToEdit = newDecks.findIndex((entry) => {
+      let deckToEdit = newDecks.findIndex(entry => {
         return entry.id === action.deckID;
       });
 
@@ -56,19 +56,18 @@ function decks(state = [], action) {
         return deck.id === action.deckID;
       });
 
-      if(deckToEdit) {
+      if (deckToEdit) {
         let { question, answer } = action.userInputs;
         let newCard = {
           id: uuidv1(),
           question: question,
           answer: answer
-        }
+        };
         deckToEdit.cards.push(newCard);
-      // Update the backend DB while you're at it.
-      DecksAPI.updateDecks(newDecks);
-      return newDecks;
-      }
-      else {
+        // Update the backend DB while you're at it.
+        DecksAPI.updateDecks(newDecks);
+        return newDecks;
+      } else {
         return state;
       }
     }
@@ -80,15 +79,14 @@ function decks(state = [], action) {
         return deck.id === action.deckID;
       });
 
-      if(deckToEdit) {
+      if (deckToEdit) {
         deckToEdit.cards = deckToEdit.cards.filter(entry => {
           return entry.id !== action.cardID;
         });
         // Update the backend DB while you're at it.
         DecksAPI.updateDecks(newDecks);
         return newDecks;
-      }
-      else {
+      } else {
         return state;
       }
     }
@@ -99,22 +97,20 @@ function decks(state = [], action) {
         return deck.id === action.deckID;
       });
 
-      if(deckToEdit) {
+      if (deckToEdit) {
         let cardToEdit = deckToEdit.cards.find(card => {
           return card.id === action.cardID;
-        })
-        if(cardToEdit) {
+        });
+        if (cardToEdit) {
           cardToEdit.question = action.userInputs.question;
           cardToEdit.answer = action.userInputs.answer;
           // Update the backend DB while you're at it.
           DecksAPI.updateDecks(newDecks);
           return newDecks;
-        }
-        else {
+        } else {
           return state;
         }
-      }
-      else {
+      } else {
         return state;
       }
     }
@@ -125,23 +121,21 @@ function decks(state = [], action) {
         return deck.id === action.deckID;
       });
 
-      if(deckToEdit) {
+      if (deckToEdit) {
         let { correct, total } = action.score;
         let newScore = {
           id: uuidv1(),
           correct: correct,
           total: total
-        }
+        };
         deckToEdit.scores.unshift(newScore);
-        if(deckToEdit.scores.length > 3)
-        {
+        if (deckToEdit.scores.length > 3) {
           deckToEdit.scores.pop();
         }
         // Update the backend DB while you're at it.
         DecksAPI.updateDecks(newDecks);
         return newDecks;
-      }
-      else {
+      } else {
         return state;
       }
     }

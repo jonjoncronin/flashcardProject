@@ -1,9 +1,25 @@
 import React from "react";
-import { Container, Header, Left, Right, Content, Body, Title,Subtitle, Icon, Button, Text, Card, CardItem, Footer, FooterTab} from "native-base";
+import {
+  Container,
+  Header,
+  Left,
+  Right,
+  Content,
+  Body,
+  Title,
+  Subtitle,
+  Icon,
+  Button,
+  Text,
+  Card,
+  CardItem,
+  Footer,
+  FooterTab
+} from "native-base";
 import { TouchableOpacity, View } from "react-native";
 import { StackNavigator } from "react-navigation";
 import { connect } from "react-redux";
-import { handleCardDelete } from "../actions"
+import { handleCardDelete } from "../actions";
 
 class CardDetails extends React.Component {
   render() {
@@ -20,15 +36,19 @@ class CardDetails extends React.Component {
 
     console.log("Card to detail: ", card);
     return (
-      <Container style={{ flex: 1, backgroundColor: "#5D5C61"}}>
-        <Header style={{backgroundColor: '#938E94'}}>
+      <Container style={{ flex: 1, backgroundColor: "#5D5C61" }}>
+        <Header style={{ backgroundColor: "#938E94" }}>
           <Left>
             <Button transparent onPress={() => navigation.goBack()}>
-              <Icon type='MaterialIcons' name='arrow-back' style={{color:'white'}} />
+              <Icon
+                type="MaterialIcons"
+                name="arrow-back"
+                style={{ color: "white" }}
+              />
             </Button>
           </Left>
           <Body>
-            <Title style={{color: 'white'}}>Details</Title>
+            <Title style={{ color: "white" }}>Details</Title>
             <Subtitle>Question</Subtitle>
           </Body>
           <Right />
@@ -37,35 +57,40 @@ class CardDetails extends React.Component {
           <Card>
             <CardItem header bordered>
               <View>
-                <Text>{card ? card.question : ''}</Text>
+                <Text>{card ? card.question : ""}</Text>
               </View>
             </CardItem>
             <CardItem>
-                <View>
-                  <Text>{card ? card.answer : ''}</Text>
-                </View>
+              <View>
+                <Text>{card ? card.answer : ""}</Text>
+              </View>
             </CardItem>
           </Card>
         </Content>
         <Footer>
-          <FooterTab style={{backgroundColor: '#272727'}}>
-            <Button vertical
+          <FooterTab style={{ backgroundColor: "#272727" }}>
+            <Button
+              vertical
               onPress={() => {
                 console.log("editting Card: ", card.id);
-                navigation.navigate("EditCard", {deckID: deck.id, cardID: card.id});
+                navigation.navigate("EditCard", {
+                  deckID: deck.id,
+                  cardID: card.id
+                });
               }}
             >
-              <Icon type='MaterialIcons' name='edit' />
+              <Icon type="MaterialIcons" name="edit" />
               <Text>Question</Text>
             </Button>
-            <Button vertical
+            <Button
+              vertical
               onPress={() => {
                 console.log("deleting Card: ", card.id);
                 handleCardDelete(deck.id, card.id);
                 navigation.goBack();
               }}
             >
-              <Icon type='MaterialIcons' name='delete-forever' />
+              <Icon type="MaterialIcons" name="delete-forever" />
               <Text>Question</Text>
             </Button>
           </FooterTab>
@@ -82,9 +107,11 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-
 const mapStateToProps = state => {
   return { decks: state };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(CardDetails);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(CardDetails);

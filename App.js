@@ -3,9 +3,7 @@ import Setup from "./src/boot/Setup";
 
 class App extends React.Component {
   render() {
-    return (
-      <Setup />
-    );
+    return <Setup />;
   }
 }
 export default App;

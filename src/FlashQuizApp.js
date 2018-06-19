@@ -2,11 +2,11 @@ import React from "react";
 import { createStore } from "redux";
 import { Provider } from "react-redux";
 import configureStore from "./store/configureStore";
-import { fetchDecks } from './actions';
+import { fetchDecks } from "./actions";
 import { createStackNavigator } from "react-navigation";
 import { View, StatusBar } from "react-native";
 import { Constants } from "expo";
-import { setLocalNotification } from './utils/notificationHelpers';
+import { setLocalNotification } from "./utils/notificationHelpers";
 /* Screens */
 import DecksView from "./screens/DecksView";
 import DeckDetails from "./screens/DeckDetails";
@@ -25,12 +25,12 @@ store.dispatch(fetchDecks()).then(() => {
   console.log("App Store state: ", store.getState());
 });
 
-function GenericStatusBar({ backgroundColor, ...props}) {
+function GenericStatusBar({ backgroundColor, ...props }) {
   return (
-    <View style={{ backgroundColor, height: Constants.statusBarHeight}}>
+    <View style={{ backgroundColor, height: Constants.statusBarHeight }}>
       <StatusBar translucent backgroundColor={backgroundColor} {...props} />
     </View>
-  )
+  );
 }
 
 const RootStack = createStackNavigator(
@@ -58,7 +58,7 @@ export default class FlashQuizApp extends React.Component {
   }
 
   render() {
-    return(
+    return (
       <Provider store={store}>
         <View style={{ flex: 1 }}>
           <GenericStatusBar
@@ -68,6 +68,6 @@ export default class FlashQuizApp extends React.Component {
           <RootStack />
         </View>
       </Provider>
-    )
+    );
   }
 }
