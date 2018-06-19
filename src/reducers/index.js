@@ -2,6 +2,12 @@ import uuidv1 from "uuid";
 import * as DecksAPI from "../utils/dbApi";
 import { AsyncStorage } from "react-native";
 
+/**
+ * Reducer for the decks state variable.
+ * @param  {Array}  [state=[]] 
+ * @param  {[type]} action
+ * @return {Array}  the updated decks state variable
+ */
 function decks(state = [], action) {
   switch (action.type) {
     case "RECEIVE_DECKS": {

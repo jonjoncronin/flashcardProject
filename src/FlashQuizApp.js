@@ -17,7 +17,10 @@ import DeckEdit from "./screens/DeckEdit";
 import CardEdit from "./screens/CardEdit";
 import QuizView from "./screens/QuizView";
 
-// Create and configure Redux Store for App state
+/**
+ * The application Redux Store for FlashQuiz
+ * @type {[type]}
+ */
 const store = configureStore();
 
 // Create and configure AsyncStorage/localStorage - emulate backend DB
@@ -25,6 +28,14 @@ store.dispatch(fetchDecks()).then(() => {
   console.log("App Store state: ", store.getState());
 });
 
+/**
+ * Stateless function component that wraps a StatusBar component. This
+ * generic component allows the caller to specify a background color for the
+ * StatusBar.
+ * @param       {[type]} backgroundColor [description]
+ * @param       {[type]} props           [description]
+ * @constructor
+ */
 function GenericStatusBar({ backgroundColor, ...props }) {
   return (
     <View style={{ backgroundColor, height: Constants.statusBarHeight }}>
@@ -33,6 +44,11 @@ function GenericStatusBar({ backgroundColor, ...props }) {
   );
 }
 
+/**
+ * The application StackNavigator defines the React-Navigation Component being
+ * used through out the entire application
+ * @type {StackNavigator}
+ */
 const RootStack = createStackNavigator(
   {
     Home: DecksView,
@@ -53,6 +69,11 @@ const RootStack = createStackNavigator(
 );
 
 export default class FlashQuizApp extends React.Component {
+
+  /**
+   * Upon application mounting local notifications should be set so that
+   * the user will get a daily FlashQuiz notification.
+   */
   componentDidMount() {
     setLocalNotification();
   }

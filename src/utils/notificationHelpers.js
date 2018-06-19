@@ -3,6 +3,10 @@ import { Notifications, Permissions } from "expo";
 
 const NOTIFICATION_KEY = "flashCard:notifications";
 
+/**
+ * function to clear local notifications from the AsyncStorage location
+ * @return {Promise} Promise returned by AsyncStorage API
+ */
 export function clearLocalNotification() {
   console.log("LocalNotification getting cleared.");
   return AsyncStorage.removeItem(NOTIFICATION_KEY).then(
@@ -10,6 +14,10 @@ export function clearLocalNotification() {
   );
 }
 
+/**
+ * function to return the notification object used by the Notifications package
+ * @return {Object} Notification object
+ */
 function createNotification() {
   return {
     title: "Take a FlashQuiz!",
@@ -26,6 +34,10 @@ function createNotification() {
   };
 }
 
+/**
+ * function to set daily local notification to notify the user to take a
+ * flashQuiz today.
+ */
 export function setLocalNotification() {
   console.log("LocalNotification getting set.");
   AsyncStorage.getItem(NOTIFICATION_KEY)
