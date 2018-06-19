@@ -1,6 +1,11 @@
 import React from "react";
-import { View, Text, Animated, TouchableWithoutFeedback,
-InteractionManager } from "react-native";
+import {
+  View,
+  Text,
+  Animated,
+  TouchableWithoutFeedback,
+  InteractionManager
+} from "react-native";
 
 class DecksButton extends React.Component {
   state = { bounceValue: new Animated.Value(1) };
