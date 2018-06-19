@@ -1,17 +1,30 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Container, Header, Left, Right, Content, Body, Title, Icon, Button, Text } from "native-base";
-import { TouchableOpacity, View, FlatList } from "react-native";
-// import DeckDetails from "./DeckDetails";
-// import DeckInput from "./DeckInput";
+import { TouchableOpacity, TouchableWithoutFeedback, View, FlatList, Animated, InteractionManager } from "react-native";
 
-class DecksView extends React.Component {
+class DeckButton extends React.Component {
+  state = { bounceValue: new Animated.Value(1) };
 
-  renderListItem = ({ item }) => {
+  handlePress = () => {
+    const { bounceValue } = this.state;
     const navigation = this.props.navigation;
+    const { item } = this.props;
+     Animated.sequence([
+       Animated.timing(bounceValue, { duration: 200, toValue: 1.2}),
+       Animated.spring(bounceValue, { toValue: 1., friction: 4})
+     ]).start();
+     InteractionManager.runAfterInteractions(() => {
+       navigation.navigate("DeckDetails", { deckID: item.id });
+     })
+
+  }
+  render() {
+    const { item } = this.props;
+    const { bounceValue } = this.state;
     return (
-      <TouchableOpacity key={item.id}
-        onPress={() => navigation.navigate("DeckDetails", { deckID: item.id })}
+      <TouchableWithoutFeedback key={item.id}
+        onPress={() => this.handlePress()}
       >
         <View
           style={{
@@ -29,17 +42,17 @@ class DecksView extends React.Component {
           }}
         >
           <View style={{ flex: 11 }}>
-            <Text
-              style={{
+            <Animated.Text
+              style={[{
                 margin: 5,
                 fontSize: 20,
                 fontWeight: "bold",
                 textAlign: "center",
                 color: "white"
-              }}
+              }, {transform: [{scale: bounceValue}]}]}
             >
               {item.title}
-            </Text>
+            </Animated.Text>
             <Text
               style={{
                 margin: 5,
@@ -61,7 +74,17 @@ class DecksView extends React.Component {
           >
           </View>
         </View>
-      </TouchableOpacity>
+      </TouchableWithoutFeedback>
+    )
+  }
+}
+
+class DecksView extends React.Component {
+
+  renderListItem = ({ item }) => {
+    const navigation = this.props.navigation;
+    return (
+      <DeckButton item={item} navigation={navigation} />
     );
   };
 
