@@ -25,7 +25,7 @@ class QuizCard extends React.Component {
           margin: 5
         }}
       >
-        <View style={{ flex: 3, backgroundColor: "white", padding: 5 }}>
+        <View style={{ flex: 2, backgroundColor: "white", padding: 5 }}>
           <View
             style={{
               flex: 1,
@@ -53,7 +53,7 @@ class QuizCard extends React.Component {
         </View>
         <View
           style={{
-            flex: 0.25,
+            flex: 1,
             flexDirection: "row",
             marginTop: 10,
             justifyContent: "space-evenly",
