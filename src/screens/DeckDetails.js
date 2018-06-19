@@ -94,7 +94,6 @@ class DeckDetails extends React.Component {
                   <Button
                     vertical
                     onPress={() => {
-                      console.log("Starting Quiz");
                       navigation.navigate("Quiz", { deckID: deck.id });
                     }}
                   >
