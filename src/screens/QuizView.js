@@ -29,7 +29,7 @@ import {
 import { StackNavigator } from "react-navigation";
 import { connect } from "react-redux";
 import { handleQuizScoreAdd } from "../actions";
-import QuizCard from "./QuizCard";
+import QuizCard from "../components/QuizCard";
 import {
   clearLocalNotification,
   setLocalNotification
