@@ -71,7 +71,7 @@ class CardEdit extends React.Component {
             </Button>
           </Left>
           <Body>
-            <Title style={{ color: "white" }}>New Question</Title>
+            <Title style={{ color: "white" }}>Edit Question</Title>
           </Body>
           <Right />
         </Header>
